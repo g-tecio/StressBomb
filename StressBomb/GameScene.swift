@@ -10,14 +10,27 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
+    var containerSprite: [ContainerSprite] = []
     var square = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         
         square = self.childNode(withName: "Image") as! SKSpriteNode
         square.physicsBody?.affectedByGravity = true
+        var numContainer = 0
+        for row in 1...4{
+            for col in 0...4{
+                // Flags Controls
+                containerSprite.append(ContainerSprite.init(numContainer: numContainer, row: row ,col: col ,inThisScene: self))
+                numContainer += 1
+            }
+        }
+        for container in 0...19{
+            self.addChild(containerSprite[container].block)
+            
+        }
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
