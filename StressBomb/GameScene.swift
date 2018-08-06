@@ -22,14 +22,14 @@ class GameScene: SKScene {
         square.physicsBody?.affectedByGravity = true
 
         var numContainer = 0
-        for row in 1...4{
+        for row in 1...5{
             for col in 0...4{
                 // Flags Controls
                 containerSprite.append(ContainerSprite.init(numContainer: numContainer, row: row ,col: col ,inThisScene: self))
                 numContainer += 1
             }
         }
-        for container in 0...19{
+        for container in 0...24{
             self.addChild(containerSprite[container].block)
             
         }

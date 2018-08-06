@@ -12,7 +12,7 @@ struct ContainerSprite{
         let block : SKSpriteNode!
         let block2 : SKSpriteNode!
     
-    let containers = ["Circle_container_1","Moon_container_1","Square_container_1","Star_container_1","Triangle_container_1","Circle_container_2","Moon_container_2","Square_container_2","Star_container_2","Triangle_container_2","Circle_container_3","Moon_container_3","Square_container_3","Star_container_3","Triangle_container_3","Circle_container_4","Moon_container_4","Square_container_4","Star_container_4","Triangle_container_4"]
+    let containers = ["Circle_container_1","Moon_container_1","Square_container_1","Star_container_1","Triangle_container_1","Circle_container_2","Moon_container_2","Square_container_2","Star_container_2","Triangle_container_2","Circle_container_3","Moon_container_3","Square_container_3","Star_container_3","Triangle_container_3","Circle_container_4","Moon_container_4","Square_container_4","Star_container_4","Triangle_container_4","Circle_container_5","Moon_container_5","Square_container_5","Star_container_5","Triangle_container_5"]
     
     init (numContainer: Int, row: Int, col: Int , inThisScene: GameScene) {
         
