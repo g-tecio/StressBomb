@@ -13,12 +13,14 @@ class GameScene: SKScene {
     var containerSprite: [ContainerSprite] = []
     var square = SKSpriteNode()
     var circle = SKSpriteNode()
+    var isFingerOnPaddle = false
     
     override func didMove(to view: SKView) {
         
         square = self.childNode(withName: "square") as! SKSpriteNode
         square.texture = SKTexture(imageNamed: "Square_figure_1")
         square.physicsBody?.affectedByGravity = true
+
         var numContainer = 0
         for row in 1...4{
             for col in 0...4{
@@ -33,45 +35,38 @@ class GameScene: SKScene {
         }
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         for touch in touches {
             let location = touch.location(in: self)
-            
-            if square.contains(location){
+            if square.frame.contains(location) {
                 square.position = location
+                isFingerOnPaddle = true
             }
         }
     }
     
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        for touch in touches {
-//            let location = touch.location(in: self)
-//            square.run(SKAction.moveTo(x: location.x, duration: 0.0))
-//            square.run(SKAction.moveTo(y: location.y, duration: 0.0))
-//
-//            circle.run(SKAction.moveTo(x: location.x, duration: 0.0))
-//            circle.run(SKAction.moveTo(y: location.y, duration: 0.0))
-//        }
-//    }
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for touch in touches {
-            let location = touch.location(in: self)
+        if isFingerOnPaddle {
             
-            if square.contains(location){
-                square.position = location
-            }
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
             
-//            square.run(SKAction.moveTo(x: location.x, duration: 0.0))
-//            square.run(SKAction.moveTo(y: location.y, duration: 0.0))
-//
-//            circle.run(SKAction.moveTo(x: location.x, duration: 0.0))
-//            circle.run(SKAction.moveTo(y: location.y, duration: 0.0))
+            var paddleX = square.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = square.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, square.size.width/2)
+            paddleX = min(paddleX, size.width - square.size.width/2)
+            
+            paddleY = max(paddleY, square.size.width/2)
+            paddleY = min(paddleY, size.width - square.size.width/2)
+            
+            square.position = CGPoint(x: paddleX, y: paddleY)
+            
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        isFingerOnPaddle = false
     }
 }

@@ -34,8 +34,7 @@ struct ContainerSprite{
         
 //        block.position = CGPoint(x: (inThisScene.size.width * 0.225 * CGFloat(col)), y: (inThisScene.size.height * 0.825 * CGFloat(row)))
         
-        block.position = CGPoint(x: xOffset + CGFloat( CGFloat(col) + 1) * (blockWidth * 1.25),
-                                 y: (inThisScene.size.height * 0.91) - ((block.size.height * 0.9 ) * CGFloat(row)))
+        block.position = CGPoint(x: xOffset + CGFloat( CGFloat(col) + 1) * (blockWidth * 1), y: (inThisScene.size.height * 1.09) - ((block.size.height * 1) * CGFloat(row)))
         block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
         block.physicsBody!.allowsRotation = false
         block.physicsBody!.friction = 0.0
