@@ -48,6 +48,7 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             if square.frame.contains(location) {
                 square.position = location
+                square.run(blinkAnimation(), withKey:"wiggle")
                 isFingerOnPaddle = true
             }
         }
@@ -73,8 +74,18 @@ class GameScene: SKScene {
             
         }
     }
-    
+    func blinkAnimation() -> SKAction{
+        let duration = 0.2
+        let fadeOut = SKAction.rotate(toAngle: 0.15, duration: duration)
+        let fadeIn = SKAction.rotate(toAngle: -0.15, duration: duration)
+        let blink = SKAction.sequence([fadeOut, fadeIn])
+        
+        return SKAction.repeatForever(blink)
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isFingerOnPaddle = false
+        square.removeAction(forKey: "wiggle")
+        square.run(SKAction.rotate(toAngle: 0, duration: 0.2))
     }
+    
 }
