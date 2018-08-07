@@ -17,10 +17,15 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+
+        
         square = self.childNode(withName: "square") as! SKSpriteNode
         square.texture = SKTexture(imageNamed: "Square_figure_1")
         square.physicsBody?.affectedByGravity = true
+        square.zPosition = 3
+        square.anchorPoint.y = -0.7
 
+    
         var numContainer = 0
         for row in 1...5{
             for col in 0...4{
@@ -34,6 +39,9 @@ class GameScene: SKScene {
             
         }
     }
+    
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
