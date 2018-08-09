@@ -36,11 +36,9 @@ struct ContainerSprite{
         let block : SKSpriteNode!
         let block2 : SKSpriteNode!
     
-    let containers = ["Circle_container_1","Moon_container_1","Square_container_1","Star_container_1","Triangle_container_1","Circle_container_2","Moon_container_2","Square_container_2","Star_container_2","Triangle_container_2","Circle_container_3","Moon_container_3","Square_container_3","Star_container_3","Triangle_container_3","Circle_container_4","Moon_container_4","Square_container_4","Star_container_4","Triangle_container_4","Circle_container_5","Moon_container_5","Square_container_5","Star_container_5","Triangle_container_5"].shuffled()
+    let containers = ["Circle_container_1","Moon_container_1","Square_container_1","Star_container_1","Triangle_container_1","Circle_container_2","Moon_container_2","Square_container_2","Star_container_2","Triangle_container_2","Circle_container_3","Moon_container_3","Square_container_3","Star_container_3","Triangle_container_3","Circle_container_4","Moon_container_4","Square_container_4","Star_container_4","Triangle_container_4","Circle_container_5","Moon_container_5","Square_container_5","Star_container_5","Triangle_container_5"]
     
-    
-    
-    
+  
     init (numContainer: Int, row: Int, col: Int , inThisScene: GameScene) {
         
         block = SKSpriteNode(imageNamed: containers[numContainer])
@@ -65,11 +63,11 @@ struct ContainerSprite{
         
         block.position = CGPoint(x: xOffset + CGFloat( CGFloat(col) + 1) * (blockWidth * 1.480), y: (inThisScene.size.height * 1) - ((block.size.height * 0.780) * CGFloat(row)))
         block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
-        block.physicsBody!.allowsRotation = false
-        block.physicsBody!.friction = 0.0
-        block.physicsBody!.affectedByGravity = false
-        block.physicsBody!.isDynamic = false
+        block.physicsBody!.collisionBitMask = 0
+        block.physicsBody?.affectedByGravity = false
         block.zPosition = 2
+        block.physicsBody?.categoryBitMask = ColliderType.containerSprite
+        block.name = containers[numContainer]
         block.setScale(CGFloat (blockScale))
         
     }
