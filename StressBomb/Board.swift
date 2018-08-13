@@ -75,6 +75,7 @@ struct ContainerSprite{
         block.physicsBody?.affectedByGravity = false
         block.zPosition = 2
         block.physicsBody?.categoryBitMask = ColliderType.triangle_blue_container
+        // block.physicsBody?.categoryBitMask = ColliderType.hexagone_green_container
         block.name = containers[numContainer]
         block.setScale(CGFloat (blockScale))
         

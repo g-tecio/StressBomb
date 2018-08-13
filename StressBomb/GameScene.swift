@@ -10,50 +10,86 @@ import SpriteKit
 import GameplayKit
 
 struct ColliderType {
-    static let square_blue: UInt32 = 21
-    static let square_blue_container: UInt32 = 22
     
-    static let square_dblue: UInt32 = 23
-    static let square_dblue_container: UInt32 = 24
+    static let circle_blue: UInt32 = 1
+    static let circle_blue_container: UInt32 = 2
     
-    static let square_green: UInt32 = 25
-    static let square_green_container: UInt32 = 26
+    static let circle_dblue: UInt32 = 1
+    static let circle_dblue_container: UInt32 = 2
     
-    static let square_red: UInt32 = 27
-    static let square_red_container: UInt32 = 28
+    static let circle_green: UInt32 = 1
+    static let circle_green_container: UInt32 = 2
     
-    static let square_yellow: UInt32 = 29
-    static let square_yellow_container: UInt32 = 30
+    static let circle_red: UInt32 = 1
+    static let circle_red_container: UInt32 = 2
     
-    static let star_blue: UInt32 = 31
-    static let star_blue_container: UInt32 = 32
+    static let circle_yellow: UInt32 = 1
+    static let circle_yellow_container: UInt32 = 2
     
-    static let star_dblue: UInt32 = 33
-    static let star_dblue_container: UInt32 = 34
+
+    static let hexagone_blue: UInt32 = 1
+    static let hexagone_blue_container: UInt32 = 2
     
-    static let star_green: UInt32 = 35
-    static let star_green_container: UInt32 = 36
+    static let hexagone_dblue: UInt32 = 1
+    static let hexagone_dblue_container: UInt32 = 2
     
-    static let star_red: UInt32 = 37
-    static let star_red_container: UInt32 = 38
+    static let hexagone_green: UInt32 = 1
+    static let hexagone_green_container: UInt32 = 2
     
-    static let star_yellow: UInt32 = 39
-    static let star_yellow_container: UInt32 = 40
+    static let hexagone_red: UInt32 = 1
+    static let hexagone_red_container: UInt32 = 2
     
-    static let triangle_blue: UInt32 = 41
-    static let triangle_blue_container: UInt32 = 42
+    static let hexagone_yellow: UInt32 = 1
+    static let hexagone_yellow_container: UInt32 = 2
     
-    static let triangle_dblue: UInt32 = 43
-    static let triangle_dblue_container: UInt32 = 44
     
-    static let triangle_green: UInt32 = 45
-    static let triangle_green_container: UInt32 = 46
+    static let square_blue: UInt32 = 1
+    static let square_blue_container: UInt32 = 2
     
-    static let triangle_red: UInt32 = 47
-    static let triangle_red_container: UInt32 = 48
+    static let square_dblue: UInt32 = 1
+    static let square_dblue_container: UInt32 = 2
     
-    static let triangle_yellow: UInt32 = 49
-    static let triangle_yellow_container: UInt32 = 50
+    static let square_green: UInt32 = 1
+    static let square_green_container: UInt32 = 2
+    
+    static let square_red: UInt32 = 1
+    static let square_red_container: UInt32 = 2
+    
+    static let square_yellow: UInt32 = 1
+    static let square_yellow_container: UInt32 = 2
+    
+    
+    static let star_blue: UInt32 = 1
+    static let star_blue_container: UInt32 = 2
+    
+    static let star_dblue: UInt32 = 1
+    static let star_dblue_container: UInt32 = 2
+    
+    static let star_green: UInt32 = 1
+    static let star_green_container: UInt32 = 2
+    
+    static let star_red: UInt32 = 1
+    static let star_red_container: UInt32 = 2
+    
+    static let star_yellow: UInt32 = 1
+    static let star_yellow_container: UInt32 = 2
+    
+    
+    static let triangle_blue: UInt32 = 1
+    static let triangle_blue_container: UInt32 = 2
+    
+    static let triangle_dblue: UInt32 = 1
+
+    static let triangle_dblue_container: UInt32 = 2
+    
+    static let triangle_green: UInt32 = 1
+    static let triangle_green_container: UInt32 = 2
+    
+    static let triangle_red: UInt32 = 1
+    static let triangle_red_container: UInt32 = 2
+    
+    static let triangle_yellow: UInt32 = 1
+    static let triangle_yellow_container: UInt32 = 2
     
 }
 
@@ -64,9 +100,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var containerSprite: [ContainerSprite] = []
     var containerPieces: [ContainerPieces] = []
-    var square = SKSpriteNode()
-    var square2 = SKSpriteNode()
-    var circle = SKSpriteNode()
+
+    var labelWin: SKLabelNode!
     
     var circle_blue = SKSpriteNode()
     var circle_dblue = SKSpriteNode()
@@ -91,9 +126,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var square_green = SKSpriteNode()
     var square_red = SKSpriteNode()
     var square_yellow = SKSpriteNode()
+    
+    var hexagone_blue = SKSpriteNode()
+    var hexagone_dblue = SKSpriteNode()
+    var hexagone_green = SKSpriteNode()
+    var hexagone_red = SKSpriteNode()
+    var hexagone_yellow = SKSpriteNode()
 
     
-    var figure_name_sqb,figure_name_sqdb,figure_name_sqg,figure_name_sqr, figure_name_sqy,
+    var figure_name_cb,figure_name_cdb,figure_name_cg,figure_name_cr, figure_name_cy,
+    figure_name_hb,figure_name_hdb,figure_name_hg,figure_name_hr, figure_name_hy,
+    figure_name_sqb,figure_name_sqdb,figure_name_sqg,figure_name_sqr, figure_name_sqy,
     figure_name_tb,figure_name_tdb,figure_name_tg,figure_name_tr, figure_name_ty,
     figure_name_sb,figure_name_sdb,figure_name_sg,figure_name_sr, figure_name_sy: String?
     
@@ -115,6 +158,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var firstBody = SKPhysicsBody()
     var secondBody = SKPhysicsBody()
     
+    var firstBodyHexa = SKPhysicsBody()
+    var secondBodyHexa = SKPhysicsBody()
     
     var isFingerOnStarBlue = false
     var isFingerOnStarDBlue = false
@@ -128,8 +173,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnSquareRed = false
     var isFingerOnSquareYellow = false
     
+    var isFingerOnHexagoneBlue = false
+    var isFingerOnHexagoneDBlue = false
+    var isFingerOnHexagoneGreen = false
+    var isFingerOnHexagoneRed = false
+    var isFingerOnHexagoneYellow = false
+    
+    
     
     override func didMove(to view: SKView) {
+        
+        
+        /// Title Label
+        labelWin = SKLabelNode.init(text: "Configuracion")
+        labelWin.name = "titleLabel-Inst"
+        labelWin.fontName = "Avenir-Heavy"
+        labelWin.horizontalAlignmentMode = .center
+        labelWin.verticalAlignmentMode = .center
+        labelWin.fontColor = .white
+        labelWin.fontSize = 28
+        labelWin.isHidden = true
+        labelWin.zPosition = 3
+        labelWin.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 2)
         
         self.physicsWorld.contactDelegate = self
 
@@ -138,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_blue.name = "Container_Triangle_Blue"
         triangle_blue.zPosition = 3
         triangle_blue.size = CGSize(width: 30, height: 30)
-        triangle_blue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2)
+        triangle_blue.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 2)
         triangle_blue.physicsBody = SKPhysicsBody(rectangleOf: triangle_blue.frame.size)
         triangle_blue.physicsBody?.affectedByGravity = false
         triangle_blue.physicsBody?.isDynamic = false
@@ -148,12 +213,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_blue.physicsBody?.contactTestBitMask = ColliderType.triangle_blue_container
         self.addChild(triangle_blue)
         
-        
         triangle_dblue = SKSpriteNode(imageNamed: "Figure_Triangle_DBlue")
         triangle_dblue.name = "Container_Triangle_DBlue"
         triangle_dblue.zPosition = 3
         triangle_dblue.size = CGSize(width: 30, height: 30)
-        triangle_dblue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2.4)
+        triangle_dblue.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 2.4)
         
         triangle_dblue.physicsBody = SKPhysicsBody(rectangleOf: triangle_dblue.frame.size)
         triangle_dblue.physicsBody?.affectedByGravity = false
@@ -168,7 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_green.name = "Container_Triangle_Green"
         triangle_green.zPosition = 3
         triangle_green.size = CGSize(width: 30, height: 30)
-        triangle_green.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 3)
+        triangle_green.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 3)
         triangle_green.physicsBody = SKPhysicsBody(rectangleOf: triangle_dblue.frame.size)
         triangle_green.physicsBody?.affectedByGravity = false
         triangle_green.physicsBody?.isDynamic = false
@@ -182,7 +246,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_red.name = "Container_Triangle_Red"
         triangle_red.zPosition = 3
         triangle_red.size = CGSize(width: 30, height: 30)
-        triangle_red.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 4)
+        triangle_red.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 4)
         triangle_red.physicsBody = SKPhysicsBody(rectangleOf: triangle_dblue.frame.size)
         triangle_red.physicsBody?.affectedByGravity = false
         triangle_red.physicsBody?.isDynamic = false
@@ -196,7 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_yellow.name = "Container_Triangle_Yellow"
         triangle_yellow.zPosition = 3
         triangle_yellow.size = CGSize(width: 30, height: 30)
-        triangle_yellow.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 6)
+        triangle_yellow.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 6)
         triangle_yellow.physicsBody = SKPhysicsBody(rectangleOf: triangle_dblue.frame.size)
         triangle_yellow.physicsBody?.affectedByGravity = false
         triangle_yellow.physicsBody?.isDynamic = false
@@ -212,7 +276,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_blue.name = "Container_Star_Blue"
         star_blue.zPosition = 3
         star_blue.size = CGSize(width: 30, height: 30)
-        star_blue.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 2)
+        star_blue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2)
         star_blue.physicsBody = SKPhysicsBody(rectangleOf: star_blue.frame.size)
         star_blue.physicsBody?.affectedByGravity = false
         star_blue.physicsBody?.isDynamic = false
@@ -227,7 +291,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_dblue.name = "Container_Star_DBlue"
         star_dblue.zPosition = 3
         star_dblue.size = CGSize(width: 30, height: 30)
-        star_dblue.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 2.4)
+        star_dblue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2.4)
         star_dblue.physicsBody = SKPhysicsBody(rectangleOf: triangle_dblue.frame.size)
         star_dblue.physicsBody?.affectedByGravity = false
         star_dblue.physicsBody?.isDynamic = false
@@ -241,7 +305,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_green.name = "Container_Star_Green"
         star_green.zPosition = 3
         star_green.size = CGSize(width: 30, height: 30)
-        star_green.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 3)
+        star_green.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 3)
         star_green.physicsBody = SKPhysicsBody(rectangleOf: star_green.frame.size)
         star_green.physicsBody?.affectedByGravity = false
         star_green.physicsBody?.isDynamic = false
@@ -255,7 +319,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_red.name = "Container_Star_Red"
         star_red.zPosition = 3
         star_red.size = CGSize(width: 30, height: 30)
-        star_red.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 4)
+        star_red.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 4)
         star_red.physicsBody = SKPhysicsBody(rectangleOf: star_red.frame.size)
         star_red.physicsBody?.affectedByGravity = false
         star_red.physicsBody?.isDynamic = false
@@ -269,7 +333,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_yellow.name = "Container_Star_Yellow"
         star_yellow.zPosition = 3
         star_yellow.size = CGSize(width: 30, height: 30)
-        star_yellow.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 6)
+        star_yellow.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 6)
         star_yellow.physicsBody = SKPhysicsBody(rectangleOf: star_yellow.frame.size)
         star_yellow.physicsBody?.affectedByGravity = false
         star_yellow.physicsBody?.isDynamic = false
@@ -284,7 +348,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_blue.name = "Container_Square_Blue"
         square_blue.zPosition = 3
         square_blue.size = CGSize(width: 30, height: 30)
-        square_blue.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 2)
+        square_blue.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 2)
         square_blue.physicsBody = SKPhysicsBody(rectangleOf: square_blue.frame.size)
         square_blue.physicsBody?.affectedByGravity = false
         square_blue.physicsBody?.isDynamic = false
@@ -299,7 +363,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_dblue.name = "Container_Square_DBlue"
         square_dblue.zPosition = 3
         square_dblue.size = CGSize(width: 30, height: 30)
-        square_dblue.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 2.4)
+        square_dblue.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 2.4)
         square_dblue.physicsBody = SKPhysicsBody(rectangleOf: square_dblue.frame.size)
         square_dblue.physicsBody?.affectedByGravity = false
         square_dblue.physicsBody?.isDynamic = false
@@ -313,7 +377,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_green.name = "Container_Square_Green"
         square_green.zPosition = 3
         square_green.size = CGSize(width: 30, height: 30)
-        square_green.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 3)
+        square_green.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 3)
         square_green.physicsBody = SKPhysicsBody(rectangleOf: square_green.frame.size)
         square_green.physicsBody?.affectedByGravity = false
         square_green.physicsBody?.isDynamic = false
@@ -327,7 +391,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_red.name = "Container_Square_Red"
         square_red.zPosition = 3
         square_red.size = CGSize(width: 30, height: 30)
-        square_red.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 4)
+        square_red.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 4)
         square_red.physicsBody = SKPhysicsBody(rectangleOf: star_red.frame.size)
         square_red.physicsBody?.affectedByGravity = false
         square_red.physicsBody?.isDynamic = false
@@ -341,7 +405,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_yellow.name = "Container_Square_Yellow"
         square_yellow.zPosition = 3
         square_yellow.size = CGSize(width: 30, height: 30)
-        square_yellow.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 6)
+        square_yellow.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 6)
         square_yellow.physicsBody = SKPhysicsBody(rectangleOf: star_yellow.frame.size)
         square_yellow.physicsBody?.affectedByGravity = false
         square_yellow.physicsBody?.isDynamic = false
@@ -351,6 +415,177 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         square_yellow.physicsBody?.contactTestBitMask = ColliderType.square_yellow_container
         self.addChild(square_yellow)
         
+        
+        
+        
+        
+        
+        
+        
+        //HEXAGONES
+        hexagone_blue = SKSpriteNode(imageNamed: "FIgure_Hexagone_Blue")
+        hexagone_blue.name = "Container_Hexagone_Blue"
+        hexagone_blue.zPosition = 3
+        hexagone_blue.size = CGSize(width: 30, height: 30)
+        hexagone_blue.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 2)
+        hexagone_blue.physicsBody = SKPhysicsBody(rectangleOf: hexagone_blue.frame.size)
+        hexagone_blue.physicsBody?.affectedByGravity = false
+        hexagone_blue.physicsBody?.isDynamic = false
+        hexagone_blue.physicsBody?.categoryBitMask = ColliderType.hexagone_blue
+        // triangle_blue.physicsBody!.collisionBitMask = 0
+        hexagone_blue.physicsBody?.collisionBitMask = ColliderType.hexagone_blue_container
+        hexagone_blue.physicsBody?.contactTestBitMask = ColliderType.hexagone_blue_container
+        self.addChild(hexagone_blue)
+        
+        hexagone_dblue = SKSpriteNode(imageNamed: "FIgure_Hexagone_DBlue")
+        hexagone_dblue.name = "Container_Hexagone_DBlue"
+        hexagone_dblue.zPosition = 3
+        hexagone_dblue.size = CGSize(width: 30, height: 30)
+        hexagone_dblue.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 2.4)
+        hexagone_dblue.physicsBody = SKPhysicsBody(rectangleOf: hexagone_dblue.frame.size)
+        hexagone_dblue.physicsBody?.affectedByGravity = false
+        hexagone_dblue.physicsBody?.isDynamic = false
+        hexagone_dblue.physicsBody?.categoryBitMask = ColliderType.hexagone_dblue
+        // triangle_blue.physicsBody!.collisionBitMask = 0
+        hexagone_dblue.physicsBody?.collisionBitMask = ColliderType.hexagone_dblue_container
+        hexagone_dblue.physicsBody?.contactTestBitMask = ColliderType.hexagone_dblue_container
+        self.addChild(hexagone_dblue)
+        
+        hexagone_green = SKSpriteNode(imageNamed: "FIgure_Hexagone_Green")
+        hexagone_green.name = "Container_Hexagone_Green"
+        hexagone_green.zPosition = 3
+        hexagone_green.size = CGSize(width: 30, height: 30)
+        hexagone_green.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 3)
+        hexagone_green.physicsBody = SKPhysicsBody(rectangleOf: hexagone_green.frame.size)
+        hexagone_green.physicsBody?.affectedByGravity = false
+        hexagone_green.physicsBody?.isDynamic = false
+        hexagone_green.physicsBody?.categoryBitMask = ColliderType.hexagone_green
+        // triangle_blue.physicsBody!.collisionBitMask = 0
+        hexagone_green.physicsBody?.collisionBitMask = ColliderType.hexagone_green_container
+        hexagone_green.physicsBody?.contactTestBitMask = ColliderType.hexagone_green_container
+        self.addChild(hexagone_green)
+        
+        hexagone_red = SKSpriteNode(imageNamed: "FIgure_Hexagone_Red")
+        hexagone_red.name = "Container_Hexagone_Red"
+        hexagone_red.zPosition = 3
+        hexagone_red.size = CGSize(width: 30, height: 30)
+        hexagone_red.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 4)
+        hexagone_red.physicsBody = SKPhysicsBody(rectangleOf: hexagone_red.frame.size)
+        hexagone_red.physicsBody?.affectedByGravity = false
+        hexagone_red.physicsBody?.isDynamic = false
+        hexagone_red.physicsBody?.categoryBitMask = ColliderType.hexagone_red
+        // triangle_blue.physicsBody!.collisionBitMask = 0
+        hexagone_red.physicsBody?.collisionBitMask = ColliderType.hexagone_red_container
+        hexagone_red.physicsBody?.contactTestBitMask = ColliderType.hexagone_red_container
+        self.addChild(hexagone_red)
+        
+        hexagone_yellow = SKSpriteNode(imageNamed: "FIgure_Hexagone_Yellow")
+        hexagone_yellow.name = "Container_Hexagone_Yellow"
+        hexagone_yellow.zPosition = 3
+        hexagone_yellow.size = CGSize(width: 30, height: 30)
+        hexagone_yellow.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 6)
+        hexagone_yellow.physicsBody = SKPhysicsBody(rectangleOf: hexagone_yellow.frame.size)
+        hexagone_yellow.physicsBody?.affectedByGravity = false
+        hexagone_yellow.physicsBody?.isDynamic = false
+        hexagone_yellow.physicsBody?.categoryBitMask = ColliderType.hexagone_yellow
+        // triangle_blue.physicsBody!.collisionBitMask = 0
+        hexagone_yellow.physicsBody?.collisionBitMask = ColliderType.hexagone_yellow_container
+        hexagone_yellow.physicsBody?.contactTestBitMask = ColliderType.hexagone_yellow_container
+        self.addChild(hexagone_yellow)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //CIRCLES
+        circle_blue.name = "Container_Circle_Blue"
+        circle_blue.texture = SKTexture(imageNamed: "FIgure_Circle_Blue")
+        circle_blue.zPosition = 3
+        // circle_blue.anchorPoint.y = -0.7
+        circle_blue.size = CGSize(width: 30, height: 30)
+        circle_blue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2)
+        //PhysicBody for the square 1
+        
+        circle_blue.physicsBody = SKPhysicsBody(rectangleOf: circle_blue.frame.size)
+        circle_blue.physicsBody?.affectedByGravity = false
+        circle_blue.physicsBody?.isDynamic = false
+        circle_blue.physicsBody?.categoryBitMask = ColliderType.circle_blue
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_blue.physicsBody?.collisionBitMask = ColliderType.circle_blue_container
+        circle_blue.physicsBody?.contactTestBitMask = ColliderType.circle_blue_container
+        self.addChild(circle_blue)
+        
+        circle_dblue.name = "Container_Circle_DBlue"
+        circle_dblue.texture = SKTexture(imageNamed: "FIgure_Circle_DBlue")
+        circle_dblue.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_dblue.size = CGSize(width: 30, height: 30)
+        circle_dblue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2.4)
+        //PhysicBody for the square 1
+        
+        circle_dblue.physicsBody = SKPhysicsBody(rectangleOf: circle_blue.frame.size)
+        circle_dblue.physicsBody?.affectedByGravity = false
+        circle_dblue.physicsBody?.isDynamic = false
+        circle_dblue.physicsBody?.categoryBitMask = ColliderType.circle_dblue
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_dblue.physicsBody?.collisionBitMask = ColliderType.circle_dblue_container
+        circle_dblue.physicsBody?.contactTestBitMask = ColliderType.circle_dblue_container
+        self.addChild(circle_dblue)
+        
+        circle_green.name = "Container_Circle_Green"
+        circle_green.texture = SKTexture(imageNamed: "FIgure_Circle_Green")
+        circle_green.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_green.size = CGSize(width: 30, height: 30)
+        circle_green.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 3)
+        //PhysicBody for the square 1
+        
+        circle_green.physicsBody = SKPhysicsBody(rectangleOf: circle_green.frame.size)
+        circle_green.physicsBody?.affectedByGravity = false
+        circle_green.physicsBody?.isDynamic = false
+        circle_green.physicsBody?.categoryBitMask = ColliderType.circle_green
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_green.physicsBody?.collisionBitMask = ColliderType.circle_green_container
+        circle_green.physicsBody?.contactTestBitMask = ColliderType.circle_green_container
+        self.addChild(circle_green)
+        
+        circle_red.name = "Container_Circle_Red"
+        circle_red.texture = SKTexture(imageNamed: "FIgure_Circle_Red")
+        circle_red.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_red.size = CGSize(width: 30, height: 30)
+        circle_red.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 4)
+        //PhysicBody for the square 1
+        
+        circle_red.physicsBody = SKPhysicsBody(rectangleOf: circle_red.frame.size)
+        circle_red.physicsBody?.affectedByGravity = false
+        circle_red.physicsBody?.isDynamic = false
+        circle_red.physicsBody?.categoryBitMask = ColliderType.circle_red
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_red.physicsBody?.collisionBitMask = ColliderType.circle_red_container
+        circle_red.physicsBody?.contactTestBitMask = ColliderType.circle_red_container
+        self.addChild(circle_red)
+        
+        circle_yellow.name = "Container_Circle_Yellow"
+        circle_yellow.texture = SKTexture(imageNamed: "FIgure_Circle_Yellow")
+        circle_yellow.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_yellow.size = CGSize(width: 30, height: 30)
+        circle_yellow.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 6)
+        //PhysicBody for the square 1
+        
+        circle_yellow.physicsBody = SKPhysicsBody(rectangleOf: circle_yellow.frame.size)
+        circle_yellow.physicsBody?.affectedByGravity = false
+        circle_yellow.physicsBody?.isDynamic = false
+        circle_yellow.physicsBody?.categoryBitMask = ColliderType.circle_yellow
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_yellow.physicsBody?.collisionBitMask = ColliderType.circle_yellow_container
+        circle_yellow.physicsBody?.contactTestBitMask = ColliderType.circle_yellow_container
+        self.addChild(circle_yellow)
 
         var numContainer = 0
         for row in 1...5{
@@ -385,12 +620,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         
         
-        if contact.bodyA.node?.name == "square"{
+        if contact.bodyA.node?.name == "Square"{
             firstBody = contact.bodyA
             secondBody = contact.bodyB
         }else{
             firstBody = contact.bodyB
             secondBody = contact.bodyA
+        }
+        
+        
+        if contact.bodyA.node?.name == "Container_Hexagone_Green"{
+            firstBodyHexa = contact.bodyA
+            secondBodyHexa = contact.bodyB
+        }else{
+            firstBodyHexa = contact.bodyB
+            secondBodyHexa = contact.bodyA
         }
         
     }
@@ -420,6 +664,92 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         figure_name_sqr = "Container_Square_Red"
         figure_name_sqy = "Container_Square_Yellow"
         
+        figure_name_hb = "Container_Hexagone_Blue"
+        figure_name_hdb = "Container_Hexagone_DBlue"
+        figure_name_hg = "Container_Hexagone_Green"
+        figure_name_hr = "Container_Hexagone_Red"
+        figure_name_hy = "Container_Hexagone_Yellow"
+        
+        figure_name_cb = "Container_Circle_Blue"
+        figure_name_cdb = "Container_Circle_DBlue"
+        figure_name_cg = "Container_Circle_Green"
+        figure_name_cr = "Container_Circle_Red"
+        figure_name_cy = "Container_Circle_Yellow"
+        
+        
+        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
+            print("Contact detected")
+            containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_blue.isHidden = true
+            circle_blue.physicsBody = nil
+            
+        }else{
+            
+            circle_blue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2)
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_DBlue" && secondBody.node?.name == figure_name_cdb {
+            print("Contact detected")
+            containerSprite[5].block.texture = SKTexture(imageNamed: "Circle_DBlue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_dblue.isHidden = true
+            circle_dblue.physicsBody = nil
+            print(circle_dblue.name)
+            print(containerSprite[5].block.name)
+        }else{
+            
+            circle_dblue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2.4)
+        }
+        
+        
+        
+        
+        if firstBody.node?.name == "Container_Circle_Green" && secondBody.node?.name == figure_name_cg {
+            print("Contact detected")
+            containerSprite[10].block.texture = SKTexture(imageNamed: "Circle_Green_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_green.isHidden = true
+            circle_green.physicsBody = nil
+            print("Array Verde", firstBody.node?.name)
+            print("Figura Verde",secondBody.node?.name)
+        }else{
+            
+            circle_green.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 3)
+            
+            
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_Red" && secondBody.node?.name == figure_name_cr {
+            print("Contact detected")
+            containerSprite[15].block.texture = SKTexture(imageNamed: "Circle_Red_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_red.isHidden = true
+            circle_red.physicsBody = nil
+            
+            
+        }else{
+            
+            circle_red.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 4)
+            
+            
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_Yellow" && secondBody.node?.name == figure_name_cy {
+            print("Contact detected")
+            containerSprite[20].block.texture = SKTexture(imageNamed: "Circle_Yellow_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_yellow.isHidden = true
+            circle_yellow.physicsBody = nil
+            
+        }else{
+            
+            circle_yellow.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 6)
+        }
+        
         //TRIANGULETES
         if firstBody.node?.name == "Container_Triangle_Blue" && secondBody.node?.name == figure_name_tb {
             print("Contact detected")
@@ -430,7 +760,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Array", containerSprite[4].block.name)
             //print("Figura", square.name)
         }else{
-             triangle_blue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2)
+             triangle_blue.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 2)
             //print("fIRST BODY", firstBody.node?.name)
             //print("eCOND Body", secondBody.node?.name)
         }
@@ -444,7 +774,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Array", containerSprite[4].block.name)
            // print("Figura", square.name)
         }else{
-            triangle_dblue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2.4)
+            triangle_dblue.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 2.4)
            // print("fIRST BODY", firstBody.node?.name)
             //print("eCOND Body", secondBody.node?.name)
         }
@@ -455,10 +785,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_green.isHidden = true
             triangle_green.physicsBody = nil
-            print("Array", containerSprite[14].block.name)
-            print("Figura", triangle_green.name)
+//            print("Array", containerSprite[14].block.name)
+//            print("Figura", triangle_green.name)
         }else{
-              triangle_green.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 3)
+              triangle_green.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 3)
            // print("fIRST BODY", firstBody.node?.name)
            // print("eCOND Body", secondBody.node?.name)
         }
@@ -472,7 +802,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Array", containerSprite[4].block.name)
             // print("Figura", square.name)
         }else{
-            triangle_red.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 4)
+            triangle_red.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 4)
             // print("fIRST BODY", firstBody.node?.name)
             // print("eCOND Body", secondBody.node?.name)
         }
@@ -486,7 +816,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Array", containerSprite[4].block.name)
             // print("Figura", square.name)
         }else{
-            triangle_yellow.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 6)
+            triangle_yellow.position = CGPoint(x: self.frame.size.width / 1.040, y: self.frame.size.width / 6)
             // print("fIRST BODY", firstBody.node?.name)
             // print("eCOND Body", secondBody.node?.name)
         }
@@ -504,7 +834,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_blue.physicsBody = nil
 
         }else{
-            star_blue.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 2)
+            star_blue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2)
         }
         
         if firstBody.node?.name == "Container_Star_DBlue" && secondBody.node?.name == figure_name_sdb {
@@ -515,7 +845,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_dblue.physicsBody = nil
 
         }else{
-            star_dblue.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 2.4)
+            star_dblue.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 2.4)
         }
         
         if firstBody.node?.name == "Container_Star_Green" && secondBody.node?.name == figure_name_sg {
@@ -526,7 +856,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_green.physicsBody = nil
 
         }else{
-            star_green.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 3)
+            star_green.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 3)
         }
         
         if firstBody.node?.name == "Container_Star_Red" && secondBody.node?.name == figure_name_sr {
@@ -537,7 +867,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_red.physicsBody = nil
 
         }else{
-            star_red.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 4)
+            star_red.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 4)
         }
         
         if firstBody.node?.name == "Container_Star_Yellow" && secondBody.node?.name == figure_name_sy {
@@ -548,7 +878,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_yellow.physicsBody = nil
 
         }else{
-            star_yellow.position = CGPoint(x: self.frame.size.width / 1.2, y: self.frame.size.width / 6)
+            star_yellow.position = CGPoint(x: self.frame.size.width / 1.1, y: self.frame.size.width / 6)
 
         }
         
@@ -566,7 +896,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_blue.isHidden = true
             square_blue.physicsBody = nil
         }else{
-            square_blue.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 2)
+            square_blue.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 2)
         }
         
         if firstBody.node?.name == "Container_Square_DBlue" && secondBody.node?.name == figure_name_sqdb {
@@ -577,7 +907,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_dblue.physicsBody = nil
 
         }else{
-            square_dblue.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 2.4)
+            square_dblue.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 2.4)
 
         }
         
@@ -588,7 +918,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_green.isHidden = true
             square_green.physicsBody = nil
         }else{
-            square_green.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 3)
+            square_green.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 3)
 
         }
         
@@ -600,7 +930,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_red.physicsBody = nil
 
         }else{
-            square_red.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 4)
+            square_red.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 4)
 
         }
         
@@ -611,17 +941,80 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_yellow.isHidden = true
             square_yellow.physicsBody = nil
         }else{
-            square_yellow.position = CGPoint(x: self.frame.size.width / 1.3, y: self.frame.size.width / 6)
+            square_yellow.position = CGPoint(x: self.frame.size.width / 1.180, y: self.frame.size.width / 6)
+        }
+        
+        
+        //HEXAGONES
+        if firstBody.node?.name == "Container_Hexagone_Blue" && secondBody.node?.name == figure_name_hb {
+            print("Contact detected")
+            containerSprite[1].block.texture = SKTexture(imageNamed: "Hexagone_Blue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            hexagone_blue.isHidden = true
+            hexagone_blue.physicsBody = nil
+        }else{
+            hexagone_blue.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 2)
+        }
+        
+        if firstBody.node?.name == "Container_Hexagone_DBlue" && secondBody.node?.name == figure_name_hdb {
+            print("Contact detected")
+            containerSprite[6].block.texture = SKTexture(imageNamed: "Hexagone_DBlue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            hexagone_dblue.isHidden = true
+            hexagone_dblue.physicsBody = nil
+            
+        }else{
+            hexagone_dblue.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 2.4)
+            
+        }
+       
+        if firstBodyHexa.node?.name == "Container_Hexagone_Green" && secondBodyHexa.node?.name == figure_name_hg {
+            print("Contact detected")
+            containerSprite[11].block.texture = SKTexture(imageNamed: "Hexagone_Green_Filled")
+            //print("Contact happened between square 1 and square 2")
+            hexagone_green.isHidden = true
+            hexagone_green.physicsBody = nil
+        }else{
+            hexagone_green.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 3)
+           print("Array", containerSprite[11].block.name)
+           print("Figura", hexagone_green.name)
+            
+            print("fIRST BODY", firstBody.node?.name)
+            print("eCOND Body", secondBody.node?.name)
+        }
+        
+        if firstBody.node?.name == "Container_Hexagone_Red" && secondBody.node?.name == figure_name_hr {
+            print("Contact detected")
+            containerSprite[16].block.texture = SKTexture(imageNamed: "Hexagone_Red_Filled")
+            //print("Contact happened between square 1 and square 2")
+            hexagone_red.isHidden = true
+            hexagone_red.physicsBody = nil
+            
+        }else{
+            hexagone_red.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 4)
+            
+        }
+        
+        if firstBody.node?.name == "Container_Hexagone_Yellow" && secondBody.node?.name == figure_name_hy {
+            print("Contact detected")
+            containerSprite[21].block.texture = SKTexture(imageNamed: "Hexagone_Yellow_Filled")
+            //print("Contact happened between square 1 and square 2")
+            hexagone_yellow.isHidden = true
+            hexagone_yellow.physicsBody = nil
+        }else{
+            hexagone_yellow.position = CGPoint(x: self.frame.size.width / 1.280, y: self.frame.size.width / 6)
         }
         
         
     }
 
+    func checar2() {
+        
     
+    }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         
         
         for touch in touches {
@@ -678,6 +1071,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
+        
         
         
         
@@ -860,12 +1254,72 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
+        
+        //HEXAGONES
+        for touch in touches {
+            let location = touch.location(in: self)
+            if hexagone_blue.frame.contains(location) {
+                hexagone_blue.position = location
+                hexagone_blue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnHexagoneBlue = true
+                print("Blue Hexagone")
+                
+                
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if hexagone_dblue.frame.contains(location) {
+                hexagone_dblue.position = location
+                hexagone_dblue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnHexagoneDBlue = true
+                print("Deep blue Hexagone")
+                
+            }
+        }
+        
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if hexagone_green.frame.contains(location) {
+                hexagone_green.position = location
+                hexagone_green.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnHexagoneGreen = true
+                print("Green Hexagone")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if hexagone_red.frame.contains(location) {
+                hexagone_red.position = location
+                hexagone_red.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnHexagoneRed = true
+                print("Red Hexagone")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if hexagone_yellow.frame.contains(location) {
+                hexagone_yellow.position = location
+                hexagone_yellow.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnHexagoneYellow = true
+                print("Yellow Hexagone")
+                
+            }
+        }
+        
+        
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        
         
         if isFingerOnCircleBlue {
             let touch = touches.first
@@ -956,11 +1410,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             circle_yellow.position = CGPoint(x: circleYellowX, y: circleYellowY)
         }
-        
-
-        
-        
-        
         
         //Trianguletes
         if isFingerOnTriangleBlue {
@@ -1259,6 +1708,111 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
+        
+        
+        
+        
+        
+        //HEXAGONES
+        if isFingerOnHexagoneBlue {
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var paddleX = hexagone_blue.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = hexagone_blue.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, hexagone_blue.size.width/2)
+            paddleX = min(paddleX, size.width - hexagone_blue.size.width/2)
+            
+            paddleY = max(paddleY, hexagone_blue.size.width/2)
+            paddleY = min(paddleY, size.width - hexagone_blue.size.width/2)
+            
+            hexagone_blue.position = CGPoint(x: paddleX, y: paddleY)
+            
+        }
+        
+        
+        if isFingerOnHexagoneDBlue {
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var paddleX = hexagone_dblue.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = hexagone_dblue.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, hexagone_dblue.size.width/2)
+            paddleX = min(paddleX, size.width - hexagone_dblue.size.width/2)
+            
+            paddleY = max(paddleY, hexagone_dblue.size.width/2)
+            paddleY = min(paddleY, size.width - hexagone_dblue.size.width/2)
+            
+            hexagone_dblue.position = CGPoint(x: paddleX, y: paddleY)
+            
+        }
+        
+        if isFingerOnHexagoneGreen {
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var paddleX = hexagone_green.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = hexagone_green.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, hexagone_green.size.width/2)
+            paddleX = min(paddleX, size.width - hexagone_green.size.width/2)
+            
+            paddleY = max(paddleY, hexagone_green.size.width/2)
+            paddleY = min(paddleY, size.width - hexagone_green.size.width/2)
+            
+            hexagone_green.position = CGPoint(x: paddleX, y: paddleY)
+            
+        }
+        
+        if isFingerOnHexagoneRed {
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var paddleX = hexagone_red.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = hexagone_red.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, hexagone_red.size.width/2)
+            paddleX = min(paddleX, size.width - hexagone_red.size.width/2)
+            
+            paddleY = max(paddleY, hexagone_red.size.width/2)
+            paddleY = min(paddleY, size.width - hexagone_red.size.width/2)
+            
+            hexagone_red.position = CGPoint(x: paddleX, y: paddleY)
+            
+        }
+        
+        
+        if isFingerOnHexagoneYellow {
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var paddleX = hexagone_yellow.position.x + (touchLocation.x - previousLocation.x)
+            var paddleY = hexagone_yellow.position.y + (touchLocation.y - previousLocation.y)
+            
+            paddleX = max(paddleX, hexagone_yellow.size.width/2)
+            paddleX = min(paddleX, size.width - hexagone_yellow.size.width/2)
+            
+            paddleY = max(paddleY, hexagone_yellow.size.width/2)
+            paddleY = min(paddleY, size.width - hexagone_yellow.size.width/2)
+            
+            hexagone_yellow.position = CGPoint(x: paddleX, y: paddleY)
+            
+        }
+        
+        
     }
     func blinkAnimation() -> SKAction{
         let duration = 0.2
@@ -1268,15 +1822,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         return SKAction.repeatForever(blink)
     }
+    
+    
+    
+    func Win(){
+        if circle_blue.isHidden && circle_dblue.isHidden && circle_green.isHidden && circle_red.isHidden && circle_yellow.isHidden
+            && hexagone_blue.isHidden && hexagone_dblue.isHidden && hexagone_green.isHidden && hexagone_red.isHidden && hexagone_yellow.isHidden
+            && square_blue.isHidden && square_dblue.isHidden && square_green.isHidden && square_red.isHidden && square_yellow.isHidden
+            && star_blue.isHidden && star_dblue.isHidden && star_green.isHidden && star_red.isHidden && star_yellow.isHidden
+            && triangle_blue.isHidden && triangle_dblue.isHidden && triangle_green.isHidden && triangle_red.isHidden && triangle_yellow.isHidden {
+            print("GANASTE")
+             labelWin.isHidden = false
+        }else{
+            print("PERDISTE")
+        }
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Checar()
         
-        
-        isFingerOnCircleBlue = false
-        isFingerOnCircleDBlue = false
-        isFingerOnCircleGreen = false
-        isFingerOnCircleRed = false
-        isFingerOnCircleYellow = false
+        Win()
         
 
         isFingerOnTriangleBlue = false
@@ -1296,6 +1860,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isFingerOnSquareGreen = false
         isFingerOnSquareRed = false
         isFingerOnSquareYellow = false
+        
+        isFingerOnHexagoneBlue = false
+        isFingerOnHexagoneDBlue = false
+        isFingerOnHexagoneGreen = false
+        isFingerOnHexagoneRed = false
+        isFingerOnHexagoneYellow = false
+        
+        
+        isFingerOnCircleBlue = false
+        isFingerOnCircleDBlue = false
+        isFingerOnCircleGreen = false
+        isFingerOnCircleRed = false
+        isFingerOnCircleYellow = false
+        
+        circle_blue.removeAction(forKey: "wiggle")
+        circle_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_dblue.removeAction(forKey: "wiggle")
+        circle_dblue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_green.removeAction(forKey: "wiggle")
+        circle_green.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_red.removeAction(forKey: "wiggle")
+        circle_red.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_yellow.removeAction(forKey: "wiggle")
+        circle_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        
         
         triangle_blue.removeAction(forKey: "wiggle")
         triangle_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
@@ -1344,6 +1938,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         square_yellow.removeAction(forKey: "wiggle")
         square_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        
+        
+        hexagone_blue.removeAction(forKey: "wiggle")
+        hexagone_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        hexagone_dblue.removeAction(forKey: "wiggle")
+        hexagone_dblue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        hexagone_green.removeAction(forKey: "wiggle")
+        hexagone_green.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        hexagone_red.removeAction(forKey: "wiggle")
+        hexagone_red.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        hexagone_yellow.removeAction(forKey: "wiggle")
+        hexagone_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
     }
     
 }
