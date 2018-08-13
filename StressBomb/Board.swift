@@ -36,7 +36,11 @@ struct ContainerSprite{
     let block : SKSpriteNode!
     let block2 : SKSpriteNode!
     
-    let containers = ["Container_Circle_Blue","Container_Star_Blue","Container_Square_Blue","Container_Hexagone_Blue","Container_Triangle_Blue","Container_Circle_DBlue","Container_Hexagone_DBlue","Container_Square_DBlue","Container_Star_DBlue","Container_Triangle_DBlue","Container_Circle_Green","Container_Hexagone_Green","Container_Square_Green","Container_Star_Green","Container_Triangle_Green","Container_Circle_Red","Container_Hexagone_Red","Container_Square_Red","Container_Star_Red","Container_Triangle_Red","Container_Circle_Yellow","Container_Hexagone_Yellow","Container_Square_Yellow","Container_Star_Yellow","Container_Triangle_Yellow"]
+    let containers = ["Container_Circle_Blue","Container_Hexagone_Blue","Container_Square_Blue","Container_Star_Blue","Container_Triangle_Blue",
+                      "Container_Circle_DBlue","Container_Hexagone_DBlue","Container_Square_DBlue","Container_Star_DBlue","Container_Triangle_DBlue",
+                      "Container_Circle_Green","Container_Hexagone_Green","Container_Square_Green","Container_Star_Green","Container_Triangle_Green",
+                      "Container_Circle_Red","Container_Hexagone_Red","Container_Square_Red","Container_Star_Red","Container_Triangle_Red",
+                      "Container_Circle_Yellow","Container_Hexagone_Yellow","Container_Square_Yellow","Container_Star_Yellow","Container_Triangle_Yellow"]
     
     
     init (numContainer: Int, row: Int, col: Int , inThisScene: GameScene) {
@@ -70,7 +74,7 @@ struct ContainerSprite{
         block.physicsBody!.collisionBitMask = 0
         block.physicsBody?.affectedByGravity = false
         block.zPosition = 2
-        block.physicsBody?.categoryBitMask = ColliderType.containerSprite
+        block.physicsBody?.categoryBitMask = ColliderType.triangle_blue_container
         block.name = containers[numContainer]
         block.setScale(CGFloat (blockScale))
         

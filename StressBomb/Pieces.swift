@@ -35,7 +35,7 @@ struct ContainerPieces{
         block.physicsBody!.collisionBitMask = 0
         block.physicsBody?.affectedByGravity = false
         block.zPosition = 2
-        block.physicsBody?.categoryBitMask = ColliderType.containerSprite
+      //  block.physicsBody?.categoryBitMask = ColliderType.containerSprite
         block.name = pieces[numContainer]
         block.setScale(CGFloat (blockScale))
         
