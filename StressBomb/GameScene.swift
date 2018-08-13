@@ -68,6 +68,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var square2 = SKSpriteNode()
     var circle = SKSpriteNode()
     
+    var circle_blue = SKSpriteNode()
+    var circle_dblue = SKSpriteNode()
+    var circle_green = SKSpriteNode()
+    var circle_red = SKSpriteNode()
+    var circle_yellow = SKSpriteNode()
+    
     var triangle_blue = SKSpriteNode()
     var triangle_dblue = SKSpriteNode()
     var triangle_green = SKSpriteNode()
@@ -96,6 +102,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnTriangleGreen = false
     var isFingerOnTriangleRed = false
     var isFingerOnTriangleYellow = false
+    
+    var isFingerOnCircleBlue = false
+    var isFingerOnCircleDBlue = false
+    var isFingerOnCircleGreen = false
+    var isFingerOnCircleRed = false
+    var isFingerOnCircleYellow = false
+
+    
     var containerFull: [Int] = []
     //var figure_name: String?
     var firstBody = SKPhysicsBody()
@@ -478,6 +492,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
+        
+        
         //ESTRELLINES
         if firstBody.node?.name == "Container_Star_Blue" && secondBody.node?.name == figure_name_sb {
             print("Contact detected")
@@ -604,6 +621,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_blue.frame.contains(location) {
+                circle_blue.position = location
+                circle_blue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleBlue = true
+                print("Blue Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_dblue.frame.contains(location) {
+                circle_dblue.position = location
+                circle_dblue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleDBlue = true
+                print("Deep Blue Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_green.frame.contains(location) {
+                circle_green.position = location
+                circle_green.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleGreen = true
+                print("Green Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_red.frame.contains(location) {
+                circle_red.position = location
+                circle_red.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleRed = true
+                print("Red Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_yellow.frame.contains(location) {
+                circle_yellow.position = location
+                circle_yellow.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleYellow = true
+                print("Yellow Circle")
+                
+            }
+        }
+        
+        
         
         //TRIANGULETES
         for touch in touches {
@@ -787,6 +863,104 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
+        
+        if isFingerOnCircleBlue {
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleBlueX = circle_blue.position.x + (touchLocation.x - previousLocation.x)
+            var circleBlueY = circle_blue.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleBlueX = max(circleBlueX, circle_blue.size.width/2)
+            circleBlueX = min(circleBlueX, size.width - circle_blue.size.width/2)
+            
+            circleBlueY = max(circleBlueY, circle_blue.size.width/2)
+            circleBlueY = min(circleBlueY, size.width - circle_blue.size.width/2)
+            
+            circle_blue.position = CGPoint(x: circleBlueX, y: circleBlueY)
+        }
+        
+        if isFingerOnCircleDBlue{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleDblueX = circle_dblue.position.x + (touchLocation.x - previousLocation.x)
+            var circleDblueY = circle_dblue.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleDblueX = max(circleDblueX, circle_dblue.size.width/2)
+            circleDblueX = min(circleDblueX, size.width - circle_dblue.size.width/2)
+            
+            circleDblueY = max(circleDblueY, circle_dblue.size.width/2)
+            circleDblueY = min(circleDblueY, size.width - circle_dblue.size.width/2)
+            
+            
+            circle_dblue.position = CGPoint(x: circleDblueX, y: circleDblueY)
+        }
+        
+        if isFingerOnCircleGreen{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleGreenX = circle_green.position.x + (touchLocation.x - previousLocation.x)
+            var circleGreenY = circle_green.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleGreenX = max(circleGreenX, circle_green.size.width/2)
+            circleGreenX = min(circleGreenX, size.width - circle_green.size.width/2)
+            
+            circleGreenY = max(circleGreenY, circle_green.size.width/2)
+            circleGreenY = min(circleGreenY, size.width - circle_green.size.width/2)
+            
+            
+            circle_green.position = CGPoint(x: circleGreenX, y: circleGreenY)
+        }
+        
+        if isFingerOnCircleRed{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleRedX = circle_red.position.x + (touchLocation.x - previousLocation.x)
+            var circleRedY = circle_red.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleRedX = max(circleRedX, circle_red.size.width/2)
+            circleRedX = min(circleRedX, size.width - circle_red.size.width/2)
+            
+            circleRedY = max(circleRedY, circle_red.size.width/2)
+            circleRedY = min(circleRedY, size.width - circle_red.size.width/2)
+            
+            
+            circle_red.position = CGPoint(x: circleRedX, y: circleRedY)
+        }
+        
+        if isFingerOnCircleYellow{
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleYellowX = circle_yellow.position.x + (touchLocation.x - previousLocation.x)
+            var circleYellowY = circle_yellow.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleYellowX = max(circleYellowX, circle_yellow.size.width/2)
+            circleYellowX = min(circleYellowX, size.width - circle_yellow.size.width/2)
+            
+            circleYellowY = max(circleYellowY, circle_yellow.size.width/2)
+            circleYellowY = min(circleYellowY, size.width - circle_yellow.size.width/2)
+            
+            
+            circle_yellow.position = CGPoint(x: circleYellowX, y: circleYellowY)
+        }
+        
+
+        
+        
+        
         
         //Trianguletes
         if isFingerOnTriangleBlue {
@@ -1097,6 +1271,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Checar()
         
+        
+        isFingerOnCircleBlue = false
+        isFingerOnCircleDBlue = false
+        isFingerOnCircleGreen = false
+        isFingerOnCircleRed = false
+        isFingerOnCircleYellow = false
+        
+
         isFingerOnTriangleBlue = false
         isFingerOnTriangleDBlue = false
         isFingerOnTriangleGreen = false
