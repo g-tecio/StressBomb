@@ -10,6 +10,22 @@ import SpriteKit
 import GameplayKit
 
 struct ColliderType {
+    
+    static let circle_blue: UInt32 = 1
+    static let circle_blue_container: UInt32 = 2
+    
+    static let circle_dblue: UInt32 = 3
+    static let circle_dblue_container: UInt32 = 4
+    
+    static let circle_green: UInt32 = 5
+    static let circle_green_container: UInt32 = 6
+    
+    static let circle_red: UInt32 = 7
+    static let circle_red_container: UInt32 = 8
+    
+    static let circle_yellow: UInt32 = 9
+    static let circle_yellow_container: UInt32 = 10
+    
     static let star_blue: UInt32 = 31
     static let star_blue_container: UInt32 = 32
     
@@ -53,6 +69,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var square2 = SKSpriteNode()
     var circle = SKSpriteNode()
     
+    var circle_blue = SKSpriteNode()
+    var circle_dblue = SKSpriteNode()
+    var circle_green = SKSpriteNode()
+    var circle_red = SKSpriteNode()
+    var circle_yellow = SKSpriteNode()
+    
     var triangle_blue = SKSpriteNode()
     var triangle_dblue = SKSpriteNode()
     var triangle_green = SKSpriteNode()
@@ -71,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var square_red = SKSpriteNode()
     var square_yellow = SKSpriteNode()
     
-    
+    var figure_name_cb, figure_name_cdb, figure_name_cr, figure_name_cg,figure_name_cy, figure_name_hb,figure_name_hdb,figure_name_hg,figure_name_hr, figure_name_hy: String?
     
     var figure_name_tb,figure_name_tdb,figure_name_tg,figure_name_tr, figure_name_ty, figure_name_sb,figure_name_sdb,figure_name_sg,figure_name_sr, figure_name_sy: String?
     
@@ -80,6 +102,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnTriangleGreen = false
     var isFingerOnTriangleRed = false
     var isFingerOnTriangleYellow = false
+    
+    var isFingerOnCircleBlue = false
+    var isFingerOnCircleDBlue = false
+    var isFingerOnCircleGreen = false
+    var isFingerOnCircleRed = false
+    var isFingerOnCircleYellow = false
+
+    
     var containerFull: [Int] = []
     //var figure_name: String?
     var firstBody = SKPhysicsBody()
@@ -243,6 +273,101 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         star_yellow.physicsBody?.contactTestBitMask = ColliderType.star_yellow_container
         self.addChild(star_yellow)
         
+        
+        circle_blue.name = "Container_Circle_Blue"
+        circle_blue.texture = SKTexture(imageNamed: "FIgure_Circle_Blue")
+        circle_blue.zPosition = 3
+        // circle_blue.anchorPoint.y = -0.7
+        circle_blue.size = CGSize(width: 30, height: 30)
+        circle_blue.position = CGPoint(x: (self.size.width / 1.1), y: (self.size.height / 2))
+        //PhysicBody for the square 1
+        
+        circle_blue.physicsBody = SKPhysicsBody(rectangleOf: circle_blue.frame.size)
+        circle_blue.physicsBody?.affectedByGravity = false
+        circle_blue.physicsBody?.isDynamic = false
+        circle_blue.physicsBody?.categoryBitMask = ColliderType.circle_blue
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_blue.physicsBody?.collisionBitMask = ColliderType.circle_blue_container
+        circle_blue.physicsBody?.contactTestBitMask = ColliderType.circle_blue_container
+        
+        
+        self.addChild(circle_blue)
+        
+        
+        circle_dblue.name = "Container_Circle_DBlue"
+        circle_dblue.texture = SKTexture(imageNamed: "FIgure_Circle_DBlue")
+        circle_dblue.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_dblue.size = CGSize(width: 30, height: 30)
+        circle_dblue.position = CGPoint(x: (self.size.width / 1.1), y: (self.size.height / 2) - 100)
+        //PhysicBody for the square 1
+        
+        circle_dblue.physicsBody = SKPhysicsBody(rectangleOf: circle_blue.frame.size)
+        circle_dblue.physicsBody?.affectedByGravity = false
+        circle_dblue.physicsBody?.isDynamic = false
+        circle_dblue.physicsBody?.categoryBitMask = ColliderType.circle_dblue
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_dblue.physicsBody?.collisionBitMask = ColliderType.circle_dblue_container
+        circle_dblue.physicsBody?.contactTestBitMask = ColliderType.circle_dblue_container
+        
+        
+        self.addChild(circle_dblue)
+        
+        circle_green.name = "Container_Circle_Green"
+        circle_green.texture = SKTexture(imageNamed: "FIgure_Circle_Green")
+        circle_green.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_green.size = CGSize(width: 30, height: 30)
+        circle_green.position = CGPoint(x: (self.size.width / 1.1) - 50, y: (self.size.height / 2) - 100)
+        //PhysicBody for the square 1
+        
+        circle_green.physicsBody = SKPhysicsBody(rectangleOf: circle_green.frame.size)
+        circle_green.physicsBody?.affectedByGravity = false
+        circle_green.physicsBody?.isDynamic = false
+        circle_green.physicsBody?.categoryBitMask = ColliderType.circle_green
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_green.physicsBody?.collisionBitMask = ColliderType.circle_green_container
+        circle_green.physicsBody?.contactTestBitMask = ColliderType.circle_green_container
+        
+        self.addChild(circle_green)
+        
+        circle_red.name = "Container_Circle_Red"
+        circle_red.texture = SKTexture(imageNamed: "FIgure_Circle_Red")
+        circle_red.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_red.size = CGSize(width: 30, height: 30)
+        circle_red.position = CGPoint(x: (self.size.width / 1.1) - 100, y: (self.size.height / 2) - 100)
+        //PhysicBody for the square 1
+        
+        circle_red.physicsBody = SKPhysicsBody(rectangleOf: circle_red.frame.size)
+        circle_red.physicsBody?.affectedByGravity = false
+        circle_red.physicsBody?.isDynamic = false
+        circle_red.physicsBody?.categoryBitMask = ColliderType.circle_red
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_red.physicsBody?.collisionBitMask = ColliderType.circle_red_container
+        circle_red.physicsBody?.contactTestBitMask = ColliderType.circle_red_container
+        
+        self.addChild(circle_red)
+        
+        circle_yellow.name = "Container_Circle_Yellow"
+        circle_yellow.texture = SKTexture(imageNamed: "FIgure_Circle_Yellow")
+        circle_yellow.zPosition = 3
+        //circle_dblue.anchorPoint.y = -0.7
+        circle_yellow.size = CGSize(width: 30, height: 30)
+        circle_yellow.position = CGPoint(x: (self.size.width / 1.1) - 150, y: (self.size.height / 2) - 100)
+        //PhysicBody for the square 1
+        
+        circle_yellow.physicsBody = SKPhysicsBody(rectangleOf: circle_yellow.frame.size)
+        circle_yellow.physicsBody?.affectedByGravity = false
+        circle_yellow.physicsBody?.isDynamic = false
+        circle_yellow.physicsBody?.categoryBitMask = ColliderType.circle_yellow
+        //        circle_blue.physicsBody!.collisionBitMask = 0
+        circle_yellow.physicsBody?.collisionBitMask = ColliderType.circle_yellow_container
+        circle_yellow.physicsBody?.contactTestBitMask = ColliderType.circle_yellow_container
+        
+        self.addChild(circle_yellow)
+
+        
 
         var numContainer = 0
         for row in 1...5{
@@ -305,6 +430,90 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         figure_name_sg = "Container_Star_Green"
         figure_name_sr = "Container_Star_Red"
         figure_name_sy = "Container_Star_Yellow"
+        
+        
+        figure_name_cb = "Container_Circle_Blue"
+        figure_name_cdb = "Container_Circle_DBlue"
+        figure_name_cg = "Container_Circle_Green"
+        figure_name_cr = "Container_Circle_Red"
+        figure_name_cy = "Container_Circle_Yellow"
+        
+        
+        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
+            print("Contact detected")
+            containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_blue.isHidden = true
+            circle_blue.physicsBody = nil
+          
+        }else{
+            
+            circle_blue.position = CGPoint(x: (self.size.width / 1.1), y: (self.size.height / 2))
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_DBlue" && secondBody.node?.name == figure_name_cdb {
+            print("Contact detected")
+            containerSprite[5].block.texture = SKTexture(imageNamed: "Circle_DBlue_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_dblue.isHidden = true
+            circle_dblue.physicsBody = nil
+            print(circle_dblue.name)
+            print(containerSprite[5].block.name)
+        }else{
+            
+            circle_dblue.position = CGPoint(x: (self.size.width / 1.1), y: (self.size.height / 2) - 100)
+        }
+        
+        
+        
+        
+        if firstBody.node?.name == "Container_Circle_Green" && secondBody.node?.name == figure_name_cg {
+            print("Contact detected")
+            containerSprite[10].block.texture = SKTexture(imageNamed: "Circle_Green_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_green.isHidden = true
+            circle_green.physicsBody = nil
+            print("Array Verde", firstBody.node?.name)
+            print("Figura Verde",secondBody.node?.name)
+        }else{
+            
+            circle_green.position = CGPoint(x: (self.size.width / 1.1) - 50, y: (self.size.height / 2) - 100)
+           
+            
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_Red" && secondBody.node?.name == figure_name_cr {
+            print("Contact detected")
+            containerSprite[15].block.texture = SKTexture(imageNamed: "Circle_Red_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_red.isHidden = true
+            circle_red.physicsBody = nil
+            
+            
+        }else{
+            
+            //circle_red.position = CGPoint(x: (self.size.width / 1.1) - 100, y: (self.size.height / 2) - 100)
+         
+            
+        }
+        
+        
+        if firstBody.node?.name == "Container_Circle_Yellow" && secondBody.node?.name == figure_name_cy {
+            print("Contact detected")
+            containerSprite[20].block.texture = SKTexture(imageNamed: "Circle_Yellow_Filled")
+            //print("Contact happened between square 1 and square 2")
+            circle_yellow.isHidden = true
+            circle_yellow.physicsBody = nil
+            
+        }else{
+            
+            circle_yellow.position = CGPoint(x: (self.size.width / 1.1) - 150, y: (self.size.height / 2) - 100)
+        }
+        
+    
+        
         
         //TRIANGULETES
         if firstBody.node?.name == "Container_Triangle_Blue" && secondBody.node?.name == figure_name_tb {
@@ -378,6 +587,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+        
+        
+        
         //ESTRELLINES
         if firstBody.node?.name == "Container_Star_Blue" && secondBody.node?.name == figure_name_sb {
             print("Contact detected")
@@ -442,6 +654,65 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_blue.frame.contains(location) {
+                circle_blue.position = location
+                circle_blue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleBlue = true
+                print("Blue Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_dblue.frame.contains(location) {
+                circle_dblue.position = location
+                circle_dblue.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleDBlue = true
+                print("Deep Blue Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_green.frame.contains(location) {
+                circle_green.position = location
+                circle_green.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleGreen = true
+                print("Green Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_red.frame.contains(location) {
+                circle_red.position = location
+                circle_red.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleRed = true
+                print("Red Circle")
+                
+            }
+        }
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            if circle_yellow.frame.contains(location) {
+                circle_yellow.position = location
+                circle_yellow.run(blinkAnimation(), withKey:"wiggle")
+                isFingerOnCircleYellow = true
+                print("Yellow Circle")
+                
+            }
+        }
+        
+        
         
         //TRIANGULETES
         for touch in touches {
@@ -565,6 +836,104 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
+        
+        if isFingerOnCircleBlue {
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleBlueX = circle_blue.position.x + (touchLocation.x - previousLocation.x)
+            var circleBlueY = circle_blue.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleBlueX = max(circleBlueX, circle_blue.size.width/2)
+            circleBlueX = min(circleBlueX, size.width - circle_blue.size.width/2)
+            
+            circleBlueY = max(circleBlueY, circle_blue.size.width/2)
+            circleBlueY = min(circleBlueY, size.width - circle_blue.size.width/2)
+            
+            circle_blue.position = CGPoint(x: circleBlueX, y: circleBlueY)
+        }
+        
+        if isFingerOnCircleDBlue{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleDblueX = circle_dblue.position.x + (touchLocation.x - previousLocation.x)
+            var circleDblueY = circle_dblue.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleDblueX = max(circleDblueX, circle_dblue.size.width/2)
+            circleDblueX = min(circleDblueX, size.width - circle_dblue.size.width/2)
+            
+            circleDblueY = max(circleDblueY, circle_dblue.size.width/2)
+            circleDblueY = min(circleDblueY, size.width - circle_dblue.size.width/2)
+            
+            
+            circle_dblue.position = CGPoint(x: circleDblueX, y: circleDblueY)
+        }
+        
+        if isFingerOnCircleGreen{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleGreenX = circle_green.position.x + (touchLocation.x - previousLocation.x)
+            var circleGreenY = circle_green.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleGreenX = max(circleGreenX, circle_green.size.width/2)
+            circleGreenX = min(circleGreenX, size.width - circle_green.size.width/2)
+            
+            circleGreenY = max(circleGreenY, circle_green.size.width/2)
+            circleGreenY = min(circleGreenY, size.width - circle_green.size.width/2)
+            
+            
+            circle_green.position = CGPoint(x: circleGreenX, y: circleGreenY)
+        }
+        
+        if isFingerOnCircleRed{
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleRedX = circle_red.position.x + (touchLocation.x - previousLocation.x)
+            var circleRedY = circle_red.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleRedX = max(circleRedX, circle_red.size.width/2)
+            circleRedX = min(circleRedX, size.width - circle_red.size.width/2)
+            
+            circleRedY = max(circleRedY, circle_red.size.width/2)
+            circleRedY = min(circleRedY, size.width - circle_red.size.width/2)
+            
+            
+            circle_red.position = CGPoint(x: circleRedX, y: circleRedY)
+        }
+        
+        if isFingerOnCircleYellow{
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            let previousLocation = touch!.previousLocation(in: self)
+            
+            var circleYellowX = circle_yellow.position.x + (touchLocation.x - previousLocation.x)
+            var circleYellowY = circle_yellow.position.y + (touchLocation.y - previousLocation.y)
+            
+            circleYellowX = max(circleYellowX, circle_yellow.size.width/2)
+            circleYellowX = min(circleYellowX, size.width - circle_yellow.size.width/2)
+            
+            circleYellowY = max(circleYellowY, circle_yellow.size.width/2)
+            circleYellowY = min(circleYellowY, size.width - circle_yellow.size.width/2)
+            
+            
+            circle_yellow.position = CGPoint(x: circleYellowX, y: circleYellowY)
+        }
+        
+
+        
+        
+        
         
         //Trianguletes
         if isFingerOnTriangleBlue {
@@ -775,6 +1144,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Checar()
         
+        
+        isFingerOnCircleBlue = false
+        isFingerOnCircleDBlue = false
+        isFingerOnCircleGreen = false
+        isFingerOnCircleRed = false
+        isFingerOnCircleYellow = false
+        
+
         isFingerOnTriangleBlue = false
         isFingerOnTriangleDBlue = false
         isFingerOnTriangleGreen = false
@@ -786,6 +1163,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isFingerOnStarGreen = false
         isFingerOnStarRed = false
         isFingerOnStarYellow = false
+        
+        
+        
+        circle_blue.removeAction(forKey: "wiggle")
+        circle_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_dblue.removeAction(forKey: "wiggle")
+        circle_dblue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_green.removeAction(forKey: "wiggle")
+        circle_green.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_red.removeAction(forKey: "wiggle")
+        circle_red.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+        
+        circle_yellow.removeAction(forKey: "wiggle")
+        circle_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
         
         triangle_blue.removeAction(forKey: "wiggle")
         triangle_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
