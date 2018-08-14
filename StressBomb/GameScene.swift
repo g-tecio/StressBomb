@@ -5,6 +5,14 @@
 //  Created by Herbeyg Robledo Reyes on 8/3/18.
 //  Copyright © 2018 TeamLynx. All rights reserved.
 //
+extension Array {
+    func randomItem() -> Element? {
+        if isEmpty { return nil }
+        let index = Int(arc4random_uniform(UInt32(self.count)))
+        return self[index]
+    }
+}
+
 
 import SpriteKit
 import GameplayKit
@@ -132,6 +140,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hexagone_green = SKSpriteNode()
     var hexagone_red = SKSpriteNode()
     var hexagone_yellow = SKSpriteNode()
+    
+    var arraySprites: [SKSpriteNode] = [SKSpriteNode]()
 
     
     var figure_name_cb,figure_name_cdb,figure_name_cg,figure_name_cr, figure_name_cy,
@@ -152,7 +162,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnCircleRed = false
     var isFingerOnCircleYellow = false
 
-    
+    var myRandomItem: SKSpriteNode!
+    var index = 0
     var containerFull: [Int] = []
     //var figure_name: String?
     var firstBody = SKPhysicsBody()
@@ -586,6 +597,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         circle_yellow.physicsBody?.collisionBitMask = ColliderType.circle_yellow_container
         circle_yellow.physicsBody?.contactTestBitMask = ColliderType.circle_yellow_container
         self.addChild(circle_yellow)
+        
+        arraySprites.append(triangle_blue)
+        arraySprites.append(triangle_dblue)
+        arraySprites.append(triangle_green)
+        arraySprites.append(triangle_red)
+        arraySprites.append(triangle_yellow)
+        arraySprites.append(star_blue)
+        arraySprites.append(star_dblue)
+        arraySprites.append(star_green)
+        arraySprites.append(star_red)
+        arraySprites.append(star_yellow)
+        arraySprites.append(square_blue)
+        arraySprites.append(square_dblue)
+        arraySprites.append(square_green)
+        arraySprites.append(square_red)
+        arraySprites.append(square_yellow)
+        arraySprites.append(hexagone_blue)
+        arraySprites.append(hexagone_dblue)
+        arraySprites.append(hexagone_green)
+        arraySprites.append(hexagone_red)
+        arraySprites.append(hexagone_yellow)
+        arraySprites.append(circle_blue)
+        arraySprites.append(circle_dblue)
+        arraySprites.append(circle_green)
+        arraySprites.append(circle_red)
+        arraySprites.append(circle_yellow)
+        
+        triangle_blue.isHidden = true
+        triangle_dblue.isHidden = true
+        triangle_green.isHidden = true
+        triangle_red.isHidden = true
+        triangle_yellow.isHidden = true
+        star_blue.isHidden = true
+        star_dblue.isHidden = true
+        star_green.isHidden = true
+        star_red.isHidden = true
+        star_yellow.isHidden = true
+        square_blue.isHidden = true
+        square_dblue.isHidden = true
+        square_green.isHidden = true
+        square_red.isHidden = true
+        square_yellow.isHidden = true
+        hexagone_blue.isHidden = true
+        hexagone_dblue.isHidden = true
+        hexagone_green.isHidden = true
+        hexagone_red.isHidden = true
+        hexagone_yellow.isHidden = true
+        circle_blue.isHidden = true
+        circle_dblue.isHidden = true
+        circle_green.isHidden = true
+        circle_red.isHidden = true
+        circle_yellow.isHidden = true
+       
+        
+        
 
         var numContainer = 0
         for row in 1...5{
@@ -619,7 +685,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        
+   
         if contact.bodyA.node?.name == "Square"{
             firstBody = contact.bodyA
             secondBody = contact.bodyB
@@ -1015,18 +1081,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        for touch in touches {
+         print("Antiguo array", arraySprites.count)
+        randomItem()
+        for touch in touches{
             let location = touch.location(in: self)
-            if circle_blue.frame.contains(location) {
-                circle_blue.position = location
-                circle_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleBlue = true
-                print("Blue Circle")
-                
-            }
+           
+            myRandomItem.frame.contains(location)
+                myRandomItem = arraySprites.randomItem()
+                myRandomItem.position.x = location.x
+                myRandomItem.position.y = location.y
+            myRandomItem.isHidden = false
+            
+            
+            
         }
+        
+    
         
         for touch in touches {
             let location = touch.location(in: self)
@@ -1841,8 +1911,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Checar()
         
         Win()
+     
         
-
+        arraySprites.remove(at: index)
+        print("Nuevo Array", arraySprites.count)
+        
+        
         isFingerOnTriangleBlue = false
         isFingerOnTriangleDBlue = false
         isFingerOnTriangleGreen = false
@@ -1955,6 +2029,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         hexagone_yellow.removeAction(forKey: "wiggle")
         hexagone_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
+    }
+    
+    func randomItem(){
+         myRandomItem = arraySprites.randomItem()
+        index = arraySprites.index(of: myRandomItem)!
+      
+        print("Holiiii", arraySprites)
     }
     
 }
