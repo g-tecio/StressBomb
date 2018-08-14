@@ -110,6 +110,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var containerPieces: [ContainerPieces] = []
 
     var labelWin: SKLabelNode!
+    var labelTimesUp: SKLabelNode!
+    
+    var timerBase = SKSpriteNode()
+    var timerNeedle = SKSpriteNode()
+    var bin = SKSpriteNode()
     
     var circle_blue = SKSpriteNode()
     var circle_dblue = SKSpriteNode()
@@ -196,8 +201,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        /// Title Label
-        labelWin = SKLabelNode.init(text: "Gratulations")
+        
+        //Timer
+        timerBase = SKSpriteNode(imageNamed: "Timer_Base")
+        timerBase.zPosition = 4
+        timerBase.size = CGSize(width: 90, height: 90)
+        timerBase.position = CGPoint(x: self.frame.size.width / 1.150, y: self.frame.size.width / 2.3)
+        self.addChild(timerBase)
+        
+        //Timer Neddle
+        timerNeedle = SKSpriteNode(imageNamed: "Timer_Needle")
+        timerNeedle.zPosition = 5
+        //timerNeedle.zRotation = CGFloat(Double.pi / 4)
+        timerNeedle.size = CGSize(width: 65, height: 65)
+        timerNeedle.position = CGPoint(x: self.frame.size.width / 1.150, y: self.frame.size.width / 2.3)
+        self.addChild(timerNeedle)
+
+        //BIN
+        bin = SKSpriteNode(imageNamed: "Full_Container")
+        bin.zPosition = 4
+        bin.size = CGSize(width: 120, height: 165)
+        bin.position = CGPoint(x: self.frame.size.width / 1.140, y: self.frame.size.width / 6.5)
+        self.addChild(bin)
+        
+        /// Label Win
+        labelWin = SKLabelNode.init(text: "Congratulations")
         labelWin.name = "titleLabel-Inst"
         labelWin.fontName = "Avenir-Heavy"
         labelWin.horizontalAlignmentMode = .center
@@ -208,7 +236,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         labelWin.zPosition = 3
         labelWin.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 3)
         self.addChild(labelWin)
+        
+        /// Times Up
+        labelTimesUp = SKLabelNode.init(text: "TIMES UP!!!")
+        labelTimesUp.name = "titleLabel-Inst"
+        labelTimesUp.fontName = "Avenir-Heavy"
+        labelTimesUp.horizontalAlignmentMode = .center
+        labelTimesUp.verticalAlignmentMode = .center
+        labelTimesUp.fontColor = .white
+        labelTimesUp.fontSize = 28
+        labelTimesUp.isHidden = true
+        labelTimesUp.zPosition = 3
+        
+        labelTimesUp.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 3)
+        self.addChild(labelTimesUp)
 
+
+        
+        
         //TRIANGULETES
         triangle_blue = SKSpriteNode(imageNamed: "FIgure_Triangle_Blue")
         triangle_blue.name = "Container_Triangle_Blue"
@@ -223,6 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         triangle_blue.physicsBody?.collisionBitMask = ColliderType.triangle_blue_container
         triangle_blue.physicsBody?.contactTestBitMask = ColliderType.triangle_blue_container
         self.addChild(triangle_blue)
+        
         
         triangle_dblue = SKSpriteNode(imageNamed: "Figure_Triangle_DBlue")
         triangle_dblue.name = "Container_Triangle_DBlue"
@@ -1074,11 +1120,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
 
-    func checar2() {
-        
-    
-    }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
          print("Antiguo array", arraySprites.count)
@@ -1384,10 +1425,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
-        
-        
-        
     }
+    
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -1894,8 +1934,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+    func startGame(){
+        
+        let action = SKAction.rotate(byAngle: -6.3, duration: 60)
+        timerNeedle.run(action, completion: {
+            print("Se acabo el tiempo")
+            self.labelTimesUp.isHidden = false
+            self.timerNeedle.isHidden = true
+            
+        })
+    }
     
     func Win(){
+
         if circle_blue.isHidden && circle_dblue.isHidden && circle_green.isHidden && circle_red.isHidden && circle_yellow.isHidden
             && hexagone_blue.isHidden && hexagone_dblue.isHidden && hexagone_green.isHidden && hexagone_red.isHidden && hexagone_yellow.isHidden
             && square_blue.isHidden && square_dblue.isHidden && square_green.isHidden && square_red.isHidden && square_yellow.isHidden
@@ -1909,7 +1960,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Checar()
-        
         Win()
      
         
@@ -1941,12 +1991,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isFingerOnHexagoneRed = false
         isFingerOnHexagoneYellow = false
         
-        
         isFingerOnCircleBlue = false
         isFingerOnCircleDBlue = false
         isFingerOnCircleGreen = false
         isFingerOnCircleRed = false
         isFingerOnCircleYellow = false
+        
+       // timerNeed.isEnabled = true
         
         circle_blue.removeAction(forKey: "wiggle")
         circle_blue.run(SKAction.rotate(toAngle: 0, duration: 0.2))
