@@ -183,9 +183,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        self.physicsWorld.contactDelegate = self
         
         /// Title Label
-        labelWin = SKLabelNode.init(text: "Configuracion")
+        labelWin = SKLabelNode.init(text: "Gratulations")
         labelWin.name = "titleLabel-Inst"
         labelWin.fontName = "Avenir-Heavy"
         labelWin.horizontalAlignmentMode = .center
@@ -194,9 +195,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         labelWin.fontSize = 28
         labelWin.isHidden = true
         labelWin.zPosition = 3
-        labelWin.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 2)
-        
-        self.physicsWorld.contactDelegate = self
+        labelWin.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 3)
+        self.addChild(labelWin)
 
         //TRIANGULETES
         triangle_blue = SKSpriteNode(imageNamed: "FIgure_Triangle_Blue")
