@@ -1180,23 +1180,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("INDEX INICIAL", index)
         
         
-        for touch in touches{
-            let location = touch.location(in: self)
-            
-            guard location.x > self.frame.size.width/1.250 else {
-                return
-            }
-            
-            guard location.y < self.frame.size.height / 2.3  else {
-                return
-            }
-            
-            myRandomItem.frame.contains(location)
-            myRandomItem.position.x = location.x
-            myRandomItem.position.y = location.y
-            myRandomItem.isHidden = false
-            
-        }
+//        for touch in touches{
+//            let location = touch.location(in: self)
+//            
+////            guard location.x > self.frame.size.width/1.250 else {
+////                return
+////            }
+////
+////            guard location.y < self.frame.size.height / 2.3  else {
+////                return
+////            }
+//            
+//
+//            
+//        }
+        
+        
         
         for touch in touches {
             let location = touch.location(in: self)
@@ -1206,359 +1205,378 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
-        
         for touch in touches {
             let location = touch.location(in: self)
-            if circle_blue.frame.contains(location) {
-                circle_blue.position = location
-                circle_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleBlue = true
-                print("Blue Circle")
+            if bin.frame.contains(location) {
+                print("Bin touched")
                 
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                circle_blue.run(action, completion: {})
+                myRandomItem.frame.contains(location)
+                myRandomItem.position.x = location.x
+                myRandomItem.position.y = location.y
+                myRandomItem.isHidden = false
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if circle_blue.frame.contains(location) {
+                        circle_blue.position = location
+                        circle_blue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnCircleBlue = true
+                        print("Blue Circle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        circle_blue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if circle_dblue.frame.contains(location) {
+                        circle_dblue.position = location
+                        circle_dblue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnCircleDBlue = true
+                        print("Deep Blue Circle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        circle_dblue.run(action, completion: {})
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if circle_green.frame.contains(location) {
+                        circle_green.position = location
+                        circle_green.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnCircleGreen = true
+                        print("Green Circle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        circle_green.run(action, completion: {})
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if circle_red.frame.contains(location) {
+                        circle_red.position = location
+                        circle_red.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnCircleRed = true
+                        print("Red Circle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        circle_red.run(action, completion: {})
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if circle_yellow.frame.contains(location) {
+                        circle_yellow.position = location
+                        circle_yellow.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnCircleYellow = true
+                        print("Yellow Circle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        circle_yellow.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                
+                
+                //TRIANGULETES
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if triangle_blue.frame.contains(location) {
+                        triangle_blue.position = location
+                        triangle_blue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnTriangleBlue = true
+                        print("Blue triangle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        triangle_blue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if triangle_dblue.frame.contains(location) {
+                        triangle_dblue.position = location
+                        triangle_dblue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnTriangleDBlue = true
+                        print("Deep blue triangle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        triangle_dblue.run(action, completion: {})
+                    }
+                }
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if triangle_green.frame.contains(location) {
+                        triangle_green.position = location
+                        triangle_green.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnTriangleGreen = true
+                        print("Green triangle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        triangle_green.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if triangle_red.frame.contains(location) {
+                        triangle_red.position = location
+                        triangle_red.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnTriangleRed = true
+                        print("Red triangle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        triangle_red.run(action, completion: {})
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if triangle_yellow.frame.contains(location) {
+                        triangle_yellow.position = location
+                        triangle_yellow.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnTriangleYellow = true
+                        print("Yellow triangle")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        triangle_yellow.run(action, completion: {})
+                        
+                    }
+                }
+                
+                //ESTRELLINES
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if star_blue.frame.contains(location) {
+                        star_blue.position = location
+                        star_blue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnStarBlue = true
+                        print("Blue Star")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        star_blue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if star_dblue.frame.contains(location) {
+                        star_dblue.position = location
+                        star_dblue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnStarDBlue = true
+                        print("Deep blue Star")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        star_dblue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if star_green.frame.contains(location) {
+                        star_green.position = location
+                        star_green.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnStarGreen = true
+                        print("Green Star")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        star_green.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if star_red.frame.contains(location) {
+                        star_red.position = location
+                        star_red.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnStarRed = true
+                        print("Red Star")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        star_red.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if star_yellow.frame.contains(location) {
+                        star_yellow.position = location
+                        star_yellow.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnStarYellow = true
+                        print("Yellow Star")
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        star_yellow.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                //SQUARES
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if square_blue.frame.contains(location) {
+                        square_blue.position = location
+                        square_blue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnSquareBlue = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        square_blue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if square_dblue.frame.contains(location) {
+                        square_dblue.position = location
+                        square_dblue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnSquareDBlue = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        square_dblue.run(action, completion: {})
+                        
+                        
+                    }
+                }
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if square_green.frame.contains(location) {
+                        square_green.position = location
+                        square_green.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnSquareGreen = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        square_green.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if square_red.frame.contains(location) {
+                        square_red.position = location
+                        square_red.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnSquareRed = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        square_red.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if square_yellow.frame.contains(location) {
+                        square_yellow.position = location
+                        square_yellow.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnSquareYellow = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        square_yellow.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                
+                
+                //HEXAGONES
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if hexagone_blue.frame.contains(location) {
+                        hexagone_blue.position = location
+                        hexagone_blue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnHexagoneBlue = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        hexagone_blue.run(action, completion: {})
+                        
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if hexagone_dblue.frame.contains(location) {
+                        hexagone_dblue.position = location
+                        hexagone_dblue.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnHexagoneDBlue = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        hexagone_dblue.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if hexagone_green.frame.contains(location) {
+                        hexagone_green.position = location
+                        hexagone_green.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnHexagoneGreen = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        hexagone_green.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if hexagone_red.frame.contains(location) {
+                        hexagone_red.position = location
+                        hexagone_red.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnHexagoneRed = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        hexagone_red.run(action, completion: {})
+                        
+                    }
+                }
+                
+                for touch in touches {
+                    let location = touch.location(in: self)
+                    if hexagone_yellow.frame.contains(location) {
+                        hexagone_yellow.position = location
+                        hexagone_yellow.run(blinkAnimation(), withKey:"wiggle")
+                        isFingerOnHexagoneYellow = true
+                        
+                        let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
+                        hexagone_yellow.run(action, completion: {})
+                        
+                    }
+                }
+                
+                
+                
                 
             }
         }
         
         
-        for touch in touches {
-            let location = touch.location(in: self)
-            if circle_dblue.frame.contains(location) {
-                circle_dblue.position = location
-                circle_dblue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleDBlue = true
-                print("Deep Blue Circle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                circle_dblue.run(action, completion: {})
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if circle_green.frame.contains(location) {
-                circle_green.position = location
-                circle_green.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleGreen = true
-                print("Green Circle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                circle_green.run(action, completion: {})
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if circle_red.frame.contains(location) {
-                circle_red.position = location
-                circle_red.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleRed = true
-                print("Red Circle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                circle_red.run(action, completion: {})
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if circle_yellow.frame.contains(location) {
-                circle_yellow.position = location
-                circle_yellow.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnCircleYellow = true
-                print("Yellow Circle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                circle_yellow.run(action, completion: {})
-                
-            }
-        }
-        
-        
-        
-        
-        //TRIANGULETES
-        for touch in touches {
-            let location = touch.location(in: self)
-            if triangle_blue.frame.contains(location) {
-                triangle_blue.position = location
-                triangle_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnTriangleBlue = true
-                print("Blue triangle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                triangle_blue.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if triangle_dblue.frame.contains(location) {
-                triangle_dblue.position = location
-                triangle_dblue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnTriangleDBlue = true
-                print("Deep blue triangle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                triangle_dblue.run(action, completion: {})
-            }
-        }
-        
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if triangle_green.frame.contains(location) {
-                triangle_green.position = location
-                triangle_green.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnTriangleGreen = true
-                print("Green triangle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                triangle_green.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if triangle_red.frame.contains(location) {
-                triangle_red.position = location
-                triangle_red.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnTriangleRed = true
-                print("Red triangle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                triangle_red.run(action, completion: {})
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if triangle_yellow.frame.contains(location) {
-                triangle_yellow.position = location
-                triangle_yellow.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnTriangleYellow = true
-                print("Yellow triangle")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                triangle_yellow.run(action, completion: {})
-                
-            }
-        }
-        
-        //ESTRELLINES
-        for touch in touches {
-            let location = touch.location(in: self)
-            if star_blue.frame.contains(location) {
-                star_blue.position = location
-                star_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnStarBlue = true
-                print("Blue Star")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                star_blue.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if star_dblue.frame.contains(location) {
-                star_dblue.position = location
-                star_dblue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnStarDBlue = true
-                print("Deep blue Star")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                star_dblue.run(action, completion: {})
-                
-            }
-        }
-        
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if star_green.frame.contains(location) {
-                star_green.position = location
-                star_green.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnStarGreen = true
-                print("Green Star")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                star_green.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if star_red.frame.contains(location) {
-                star_red.position = location
-                star_red.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnStarRed = true
-                print("Red Star")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                star_red.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if star_yellow.frame.contains(location) {
-                star_yellow.position = location
-                star_yellow.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnStarYellow = true
-                print("Yellow Star")
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                star_yellow.run(action, completion: {})
-                
-            }
-        }
-        
-        
-        //SQUARES
-        for touch in touches {
-            let location = touch.location(in: self)
-            if square_blue.frame.contains(location) {
-                square_blue.position = location
-                square_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnSquareBlue = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                square_blue.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if square_dblue.frame.contains(location) {
-                square_dblue.position = location
-                square_dblue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnSquareDBlue = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                square_dblue.run(action, completion: {})
-                
-                
-            }
-        }
-        
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if square_green.frame.contains(location) {
-                square_green.position = location
-                square_green.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnSquareGreen = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                square_green.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if square_red.frame.contains(location) {
-                square_red.position = location
-                square_red.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnSquareRed = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                square_red.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if square_yellow.frame.contains(location) {
-                square_yellow.position = location
-                square_yellow.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnSquareYellow = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                square_yellow.run(action, completion: {})
-                
-            }
-        }
-        
-        
-        
-        
-        //HEXAGONES
-        for touch in touches {
-            let location = touch.location(in: self)
-            if hexagone_blue.frame.contains(location) {
-                hexagone_blue.position = location
-                hexagone_blue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnHexagoneBlue = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                hexagone_blue.run(action, completion: {})
-                
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if hexagone_dblue.frame.contains(location) {
-                hexagone_dblue.position = location
-                hexagone_dblue.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnHexagoneDBlue = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                hexagone_dblue.run(action, completion: {})
-                
-            }
-        }
-        
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if hexagone_green.frame.contains(location) {
-                hexagone_green.position = location
-                hexagone_green.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnHexagoneGreen = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                hexagone_green.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if hexagone_red.frame.contains(location) {
-                hexagone_red.position = location
-                hexagone_red.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnHexagoneRed = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                hexagone_red.run(action, completion: {})
-                
-            }
-        }
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if hexagone_yellow.frame.contains(location) {
-                hexagone_yellow.position = location
-                hexagone_yellow.run(blinkAnimation(), withKey:"wiggle")
-                isFingerOnHexagoneYellow = true
-                
-                let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
-                hexagone_yellow.run(action, completion: {})
-                
-            }
-        }
+
         
         
         
@@ -2087,12 +2105,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             && square_blue.isHidden && square_dblue.isHidden && square_green.isHidden && square_red.isHidden && square_yellow.isHidden
             && star_blue.isHidden && star_dblue.isHidden && star_green.isHidden && star_red.isHidden && star_yellow.isHidden
             && triangle_blue.isHidden && triangle_dblue.isHidden && triangle_green.isHidden && triangle_red.isHidden && triangle_yellow.isHidden {
-            
-            if arraySprites.count == 24{
-                bin = SKSpriteNode(imageNamed: "Container_Empty")
-                //print("Esta vacio")
-            }
-            
             print("GANASTE")
             
             
@@ -2107,6 +2119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if arraySprites.count == 0{
             binEmpty.isHidden = false
+            labelWin.isHidden = false
         }
         
         print("INDEX FINAL", index)
