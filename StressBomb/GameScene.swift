@@ -149,6 +149,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var triangle_green = SKSpriteNode()
     var triangle_red = SKSpriteNode()
     var triangle_yellow = SKSpriteNode()
+    var clicked:Bool = false
+    var start:Bool = false
     
     var star_blue = SKSpriteNode()
     var star_dblue = SKSpriteNode()
@@ -1201,10 +1203,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             if timerNeedle.frame.contains(location) {
                 print("Start Game")
+                if clicked == false {
                 startGame()
+                }
+                clicked = true
+
+                start = true
             }
         }
-        
+        if start == true{
         for touch in touches {
             let location = touch.location(in: self)
             if bin.frame.contains(location) {
@@ -1573,10 +1580,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
             }
+            
+            }
         }
         
         
-
+        
         
         
         
@@ -2091,6 +2100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let action = SKAction.rotate(byAngle: -6.3, duration: 60)
         timerNeedle.run(action, completion: {
             print("Se acabo el tiempo")
+            self.start = false
             self.labelTimesUp.isHidden = false
             
             
