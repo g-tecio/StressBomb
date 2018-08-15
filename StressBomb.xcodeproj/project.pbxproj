@@ -17,6 +17,8 @@
 		DE98B48C2114CDA60069FD62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE98B48A2114CDA60069FD62 /* Main.storyboard */; };
 		DE98B48E2114CDAE0069FD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE98B48D2114CDAE0069FD62 /* Assets.xcassets */; };
 		DE98B4912114CDAE0069FD62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE98B48F2114CDAE0069FD62 /* LaunchScreen.storyboard */; };
+		DEAC7F1A2124D04A008F2FAE /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC7F192124D04A008F2FAE /* GameOverScene.swift */; };
+		DEAC7F1C2124D063008F2FAE /* WinningScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAC7F1B2124D063008F2FAE /* WinningScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DE98B48D2114CDAE0069FD62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE98B4902114CDAE0069FD62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE98B4922114CDAE0069FD62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEAC7F192124D04A008F2FAE /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		DEAC7F1B2124D063008F2FAE /* WinningScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinningScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				DE98B4822114CDA60069FD62 /* GameScene.sks */,
 				DE98B4842114CDA60069FD62 /* Actions.sks */,
 				DE98B4862114CDA60069FD62 /* GameScene.swift */,
+				DEAC7F192124D04A008F2FAE /* GameOverScene.swift */,
+				DEAC7F1B2124D063008F2FAE /* WinningScene.swift */,
 				DE98B4882114CDA60069FD62 /* GameViewController.swift */,
 				DE98B48A2114CDA60069FD62 /* Main.storyboard */,
 				DE98B48D2114CDAE0069FD62 /* Assets.xcassets */,
@@ -154,8 +160,10 @@
 			files = (
 				21726D54211C8A7000B1626A /* Pieces.swift in Sources */,
 				DE98B4872114CDA60069FD62 /* GameScene.swift in Sources */,
+				DEAC7F1C2124D063008F2FAE /* WinningScene.swift in Sources */,
 				DE98B4892114CDA60069FD62 /* GameViewController.swift in Sources */,
 				213D2B322118B36F00AF461A /* Board.swift in Sources */,
+				DEAC7F1A2124D04A008F2FAE /* GameOverScene.swift in Sources */,
 				DE98B4812114CDA60069FD62 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
