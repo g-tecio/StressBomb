@@ -31,7 +31,7 @@ extension Array {
     var chooseOne: Element { return self[Int(arc4random_uniform(UInt32(count)))] }
     func choose(_ n: Int) -> Array { return Array(shuffled.prefix(n)) }
 }
-    
+
 
 
 import SpriteKit
@@ -223,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-       
+        
         //Timer
         timerBase = SKSpriteNode(imageNamed: "Timer_Base")
         timerBase.zPosition = 4
@@ -577,14 +577,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-       // CIRCLES
+        // CIRCLES
         circle_blue.name = "Container_Circle_Blue"
         circle_blue.texture = SKTexture(imageNamed: "FIgure_Circle_Blue")
         circle_blue.zPosition = 3
         circle_blue.size = CGSize(width: 30, height: 30)
         circle_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         //PhysicBody for the square 1
-
+        
         circle_blue.physicsBody = SKPhysicsBody(rectangleOf: circle_blue.frame.size)
         circle_blue.physicsBody?.affectedByGravity = false
         circle_blue.physicsBody?.isDynamic = false
@@ -713,10 +713,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         circle_red.isHidden = true
         circle_yellow.isHidden = true
         
-
+        
         print("Holiiii", arraySprites)
         print(index)
- 
+        
         
         var numContainer = 0
         for row in 1...5{
@@ -750,7 +750,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-       
+        
         
         if contact.bodyA.node?.name == "Square"{
             firstBody = contact.bodyA
@@ -809,17 +809,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         figure_name_cy = "Container_Circle_Yellow"
         
         
-//        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
-//            print("Contact detected")
-//            containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
-//            //print("Contact happened between square 1 and square 2")
-//            circle_blue.isHidden = true
-//            circle_blue.physicsBody = nil
-//
-//        }else{
-//
-//            circle_blue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2)
-//        }
+        //        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
+        //            print("Contact detected")
+        //            containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
+        //            //print("Contact happened between square 1 and square 2")
+        //            circle_blue.isHidden = true
+        //            circle_blue.physicsBody = nil
+        //
+        //        }else{
+        //
+        //            circle_blue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2)
+        //        }
         
         if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
             print("Contact detected")
@@ -841,8 +841,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             circle_dblue.isHidden = true
             circle_dblue.physicsBody = nil
-             arraySprites.remove(at: index)
-           
+            arraySprites.remove(at: index)
+            
         }else{
             
             circle_dblue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2.4)
@@ -857,7 +857,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             circle_green.isHidden = true
             circle_green.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             
@@ -873,7 +873,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             circle_red.isHidden = true
             circle_red.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
             
         }else{
@@ -890,7 +890,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             circle_yellow.isHidden = true
             circle_yellow.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             
@@ -904,7 +904,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_blue.isHidden = true
             triangle_blue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             //print("Array", containerSprite[4].block.name)
             //print("Figura", square.name)
         }else{
@@ -919,7 +919,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_dblue.isHidden = true
             triangle_dblue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             //print("Array", containerSprite[4].block.name)
             // print("Figura", square.name)
         }else{
@@ -934,7 +934,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_green.isHidden = true
             triangle_green.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             //            print("Array", containerSprite[14].block.name)
             //            print("Figura", triangle_green.name)
         }else{
@@ -949,7 +949,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_red.isHidden = true
             triangle_red.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             //print("Array", containerSprite[4].block.name)
             // print("Figura", square.name)
         }else{
@@ -964,7 +964,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             triangle_yellow.isHidden = true
             triangle_yellow.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             //print("Array", containerSprite[4].block.name)
             // print("Figura", square.name)
         }else{
@@ -984,7 +984,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             star_blue.isHidden = true
             star_blue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             star_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
@@ -996,7 +996,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             star_dblue.isHidden = true
             star_dblue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             star_dblue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2.4)
@@ -1008,7 +1008,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             star_green.isHidden = true
             star_green.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             star_green.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 3)
@@ -1020,7 +1020,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             star_red.isHidden = true
             star_red.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             star_red.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 4)
@@ -1032,7 +1032,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             star_yellow.isHidden = true
             star_yellow.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             star_yellow.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 6)
@@ -1052,7 +1052,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             square_blue.isHidden = true
             square_blue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             square_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         }
@@ -1063,7 +1063,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             square_dblue.isHidden = true
             square_dblue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             square_dblue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2.4)
@@ -1076,7 +1076,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             square_green.isHidden = true
             square_green.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             square_green.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 3)
             
@@ -1088,7 +1088,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             square_red.isHidden = true
             square_red.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             square_red.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 4)
@@ -1101,7 +1101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             square_yellow.isHidden = true
             square_yellow.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             square_yellow.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 6)
         }
@@ -1114,7 +1114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             hexagone_blue.isHidden = true
             hexagone_blue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             hexagone_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         }
@@ -1125,7 +1125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             hexagone_dblue.isHidden = true
             hexagone_dblue.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             hexagone_dblue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2.4)
@@ -1138,10 +1138,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             hexagone_green.isHidden = true
             hexagone_green.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             hexagone_green.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 3)
-        
+            
         }
         
         if firstBody.node?.name == "Container_Hexagone_Red" && secondBody.node?.name == figure_name_hr {
@@ -1150,7 +1150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             hexagone_red.isHidden = true
             hexagone_red.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
             
         }else{
             hexagone_red.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 4)
@@ -1163,14 +1163,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("Contact happened between square 1 and square 2")
             hexagone_yellow.isHidden = true
             hexagone_yellow.physicsBody = nil
-             arraySprites.remove(at: index)
+            arraySprites.remove(at: index)
         }else{
             hexagone_yellow.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 6)
         }
         
         
     }
-  
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -1217,7 +1217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
                 circle_blue.run(action, completion: {})
-
+                
             }
         }
         
@@ -1241,7 +1241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 circle_green.position = location
                 circle_green.run(blinkAnimation(), withKey:"wiggle")
                 isFingerOnCircleGreen = true
-                print("Green Circle")    
+                print("Green Circle")
                 
                 let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
                 circle_green.run(action, completion: {})
@@ -1428,7 +1428,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 square_blue.position = location
                 square_blue.run(blinkAnimation(), withKey:"wiggle")
                 isFingerOnSquareBlue = true
-               
+                
                 let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
                 square_blue.run(action, completion: {})
                 
@@ -1553,7 +1553,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 hexagone_yellow.position = location
                 hexagone_yellow.run(blinkAnimation(), withKey:"wiggle")
                 isFingerOnHexagoneYellow = true
-               
+                
                 let action = SKAction.moveBy(x: 0, y: 40, duration: 0.2)
                 hexagone_yellow.run(action, completion: {})
                 
@@ -2074,12 +2074,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timerNeedle.run(action, completion: {
             print("Se acabo el tiempo")
             self.labelTimesUp.isHidden = false
-        
+            
             
         })
     }
     
-   
+    
     
     func Win(){
         if circle_blue.isHidden && circle_dblue.isHidden && circle_green.isHidden && circle_red.isHidden && circle_yellow.isHidden
@@ -2095,21 +2095,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             print("GANASTE")
             
-           
+            
         }else{
             print("PERDISTE")
         }
     }
-   
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         Checar()
-       //Win()
+        //Win()
         
         if arraySprites.count == 0{
             binEmpty.isHidden = false
         }
         
-       print("INDEX FINAL", index)
+        print("INDEX FINAL", index)
         print("Nuevo Array", arraySprites.count)
         
         isFingerOnTriangleBlue = false
@@ -2226,6 +2226,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hexagone_yellow.run(SKAction.rotate(toAngle: 0, duration: 0.2))
     }
     
-   
+    
     
 }
