@@ -1195,7 +1195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             myRandomItem.position.x = location.x
             myRandomItem.position.y = location.y
             myRandomItem.isHidden = false
-       
+            
         }
         
         for touch in touches {
