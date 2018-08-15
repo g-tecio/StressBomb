@@ -240,7 +240,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //BIN
         bin = SKSpriteNode(imageNamed: "Full_Container")
-        bin.zPosition = 4
+        bin.zPosition = 1
         bin.size = CGSize(width: 120, height: 165)
         bin.position = CGPoint(x: self.frame.size.width / 1.140, y: self.frame.size.width / 6.5)
         self.addChild(bin)
@@ -1158,14 +1158,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         myRandomItem = arraySprites.chooseOne
         index = arraySprites.index(of: myRandomItem)!
         print("INDEX INICIAL", index)
+        
+       
         for touch in touches{
             let location = touch.location(in: self)
+            
+//            bin.size = CGSize(width: 120, height: 165)
+//            bin.position = CGPoint(x: self.frame.size.width / 1.140, y: self.frame.size.width / 6.5)
+            guard location.x > self.frame.size.width/1.250 else {
+                return
+            }
+            
+            guard location.y < self.frame.size.height / 2.3  else {
+                return
+            }
+            
             
             myRandomItem.frame.contains(location)
             myRandomItem.position.x = location.x
             myRandomItem.position.y = location.y
             myRandomItem.isHidden = false
-       
+            
         }
         
         for touch in touches {
