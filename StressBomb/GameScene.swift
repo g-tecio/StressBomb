@@ -137,6 +137,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timerNeedle = SKSpriteNode()
     var bin = SKSpriteNode()
     var binEmpty = SKSpriteNode()
+    var blackScreen = SKSpriteNode()
+    var happyFace = SKSpriteNode()
+    var sadFace = SKSpriteNode()
     
     var circle_blue = SKSpriteNode()
     var circle_dblue = SKSpriteNode()
@@ -246,7 +249,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bin.position = CGPoint(x: self.frame.size.width / 1.140, y: self.frame.size.width / 6.5)
         self.addChild(bin)
         
-        //BIN
+        //BIN EMPTY
         binEmpty = SKSpriteNode(imageNamed: "Container_Empty")
         binEmpty.zPosition = 2
         binEmpty.isHidden = true
@@ -280,6 +283,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         labelTimesUp.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.width / 3)
         self.addChild(labelTimesUp)
+        
+        //BIN EMPTY
+        blackScreen = SKSpriteNode(imageNamed: "Black_Screen")
+        blackScreen.zPosition = 4
+        blackScreen.isHidden = true
+        blackScreen.size = CGSize(width: 430, height: 320)
+        blackScreen.position = CGPoint(x: self.frame.size.width / 2.6, y: self.frame.size.width / 3.5)
+        self.addChild(blackScreen)
         
         //TRIANGULETES
         triangle_blue = SKSpriteNode(imageNamed: "FIgure_Triangle_Blue")
@@ -1182,7 +1193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 //        for touch in touches{
 //            let location = touch.location(in: self)
-//            
+//
 ////            guard location.x > self.frame.size.width/1.250 else {
 ////                return
 ////            }
@@ -1192,7 +1203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 ////            }
 //            
 //
-//            
+//
 //        }
         
         
@@ -2092,6 +2103,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timerNeedle.run(action, completion: {
             print("Se acabo el tiempo")
             self.labelTimesUp.isHidden = false
+            
+            
             
             
         })
