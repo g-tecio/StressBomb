@@ -179,13 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var arraySprites: [SKSpriteNode] = [SKSpriteNode]()
     
-    
-    var figure_name_cb,figure_name_cdb,figure_name_cg,figure_name_cr, figure_name_cy,
-    figure_name_hb,figure_name_hdb,figure_name_hg,figure_name_hr, figure_name_hy,
-    figure_name_sqb,figure_name_sqdb,figure_name_sqg,figure_name_sqr, figure_name_sqy,
-    figure_name_tb,figure_name_tdb,figure_name_tg,figure_name_tr, figure_name_ty,
-    figure_name_sb,figure_name_sdb,figure_name_sg,figure_name_sr, figure_name_sy: String?
-    
+   
     var isFingerOnTriangleBlue = false
     var isFingerOnTriangleDBlue = false
     var isFingerOnTriangleGreen = false
@@ -826,51 +820,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func Checar(){
         
-        figure_name_tb = "Container_Triangle_Blue"
-        figure_name_tdb = "Container_Triangle_DBlue"
-        figure_name_tg = "Container_Triangle_Green"
-        figure_name_tr = "Container_Triangle_Red"
-        figure_name_ty = "Container_Triangle_Yellow"
+  
         
-        
-        figure_name_sb = "Container_Star_Blue"
-        figure_name_sdb = "Container_Star_DBlue"
-        figure_name_sg = "Container_Star_Green"
-        figure_name_sr = "Container_Star_Red"
-        figure_name_sy = "Container_Star_Yellow"
-        
-        figure_name_sqb = "Container_Square_Blue"
-        figure_name_sqdb = "Container_Square_DBlue"
-        figure_name_sqg = "Container_Square_Green"
-        figure_name_sqr = "Container_Square_Red"
-        figure_name_sqy = "Container_Square_Yellow"
-        
-        figure_name_hb = "Container_Hexagone_Blue"
-        figure_name_hdb = "Container_Hexagone_DBlue"
-        figure_name_hg = "Container_Hexagone_Green"
-        figure_name_hr = "Container_Hexagone_Red"
-        figure_name_hy = "Container_Hexagone_Yellow"
-        
-        figure_name_cb = "Container_Circle_Blue"
-        figure_name_cdb = "Container_Circle_DBlue"
-        figure_name_cg = "Container_Circle_Green"
-        figure_name_cr = "Container_Circle_Red"
-        figure_name_cy = "Container_Circle_Yellow"
-        
-        
-        //        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
-        //            print("Contact detected")
-        //            containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
-        //            //print("Contact happened between square 1 and square 2")
-        //            circle_blue.isHidden = true
-        //            circle_blue.physicsBody = nil
-        //
-        //        }else{
-        //
-        //            circle_blue.position = CGPoint(x: self.frame.size.width / 1.380, y: self.frame.size.width / 2)
-        //        }
-        
-        if firstBody.node?.name == "Container_Circle_Blue" && secondBody.node?.name == figure_name_cb {
+        if secondBody.node?.name == circle_blue.name {
             print("Contact detected")
             containerSprite[0].block.texture = SKTexture(imageNamed: "Circle_Blue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -884,7 +836,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if firstBody.node?.name == "Container_Circle_DBlue" && secondBody.node?.name == figure_name_cdb {
+        if secondBody.node?.name == circle_dblue.name {
             print("Contact detected")
             containerSprite[5].block.texture = SKTexture(imageNamed: "Circle_DBlue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -900,8 +852,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        if firstBody.node?.name == "Container_Circle_Green" && secondBody.node?.name == figure_name_cg {
+        if secondBody.node?.name == circle_green.name {
             print("Contact detected")
+           
             containerSprite[10].block.texture = SKTexture(imageNamed: "Circle_Green_Filled")
             //print("Contact happened between square 1 and square 2")
             circle_green.isHidden = true
@@ -916,7 +869,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if firstBody.node?.name == "Container_Circle_Red" && secondBody.node?.name == figure_name_cr {
+        if secondBody.node?.name == circle_red.name {
             print("Contact detected")
             containerSprite[15].block.texture = SKTexture(imageNamed: "Circle_Red_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -933,7 +886,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if firstBody.node?.name == "Container_Circle_Yellow" && secondBody.node?.name == figure_name_cy {
+        if secondBody.node?.name == circle_yellow.name {
             print("Contact detected")
             containerSprite[20].block.texture = SKTexture(imageNamed: "Circle_Yellow_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -947,9 +900,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         //TRIANGULETES
-        if firstBody.node?.name == "Container_Triangle_Blue" && secondBody.node?.name == figure_name_tb {
+        if secondBody.node?.name == triangle_blue.name {
             print("Contact detected")
             containerSprite[4].block.texture = SKTexture(imageNamed: "Triangle_Blue_Filled")
+            
+       
             //print("Contact happened between square 1 and square 2")
             triangle_blue.isHidden = true
             triangle_blue.physicsBody = nil
@@ -962,9 +917,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("eCOND Body", secondBody.node?.name)
         }
         
-        if firstBody.node?.name == "Container_Triangle_DBlue" && secondBody.node?.name == figure_name_tdb {
+        if secondBody.node?.name == triangle_dblue.name{
             print("Contact detected")
             containerSprite[9].block.texture = SKTexture(imageNamed: "Triangle_DBlue_Filled")
+        
+            
             //print("Contact happened between square 1 and square 2")
             triangle_dblue.isHidden = true
             triangle_dblue.physicsBody = nil
@@ -977,9 +934,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //print("eCOND Body", secondBody.node?.name)
         }
         
-        if firstBody.node?.name == "Container_Triangle_Green" && secondBody.node?.name == figure_name_tg {
+        if secondBody.node?.name == triangle_green.name {
             print("Contact detected")
             containerSprite[14].block.texture = SKTexture(imageNamed: "Triangle_Green_Filled")
+            
+         
             //print("Contact happened between square 1 and square 2")
             triangle_green.isHidden = true
             triangle_green.physicsBody = nil
@@ -992,9 +951,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // print("eCOND Body", secondBody.node?.name)
         }
         
-        if firstBody.node?.name == "Container_Triangle_Red" && secondBody.node?.name == figure_name_tr {
+        if secondBody.node?.name == triangle_red.name {
             print("Contact detected")
             containerSprite[19].block.texture = SKTexture(imageNamed: "Triangle_Red_Filled")
+            
+            print("EL PRIMER CUERPO:", firstBody.node?.name)
+            
+            print("EL PRIMER CUERPO:", secondBody.node?.name)
             //print("Contact happened between square 1 and square 2")
             triangle_red.isHidden = true
             triangle_red.physicsBody = nil
@@ -1007,7 +970,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // print("eCOND Body", secondBody.node?.name)
         }
         
-        if firstBody.node?.name == "Container_Triangle_Yellow" && secondBody.node?.name == figure_name_ty {
+        if  secondBody.node?.name == triangle_yellow.name {
             print("Contact detected")
             containerSprite[24].block.texture = SKTexture(imageNamed: "Triangle_Yellow_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1027,7 +990,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         //ESTRELLINES
-        if firstBody.node?.name == "Container_Star_Blue" && secondBody.node?.name == figure_name_sb {
+        if secondBody.node?.name == star_blue.name {
             print("Contact detected")
             containerSprite[3].block.texture = SKTexture(imageNamed: "Star_Blue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1039,7 +1002,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         }
         
-        if firstBody.node?.name == "Container_Star_DBlue" && secondBody.node?.name == figure_name_sdb {
+        if secondBody.node?.name == star_dblue.name {
             print("Contact detected")
             containerSprite[8].block.texture = SKTexture(imageNamed: "Star_DBlue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1051,7 +1014,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_dblue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2.4)
         }
         
-        if firstBody.node?.name == "Container_Star_Green" && secondBody.node?.name == figure_name_sg {
+        if secondBody.node?.name == star_green.name {
             print("Contact detected")
             containerSprite[13].block.texture = SKTexture(imageNamed: "Star_Green_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1063,7 +1026,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_green.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 3)
         }
         
-        if firstBody.node?.name == "Container_Star_Red" && secondBody.node?.name == figure_name_sr {
+        if secondBody.node?.name == star_red.name {
             print("Contact detected")
             containerSprite[18].block.texture = SKTexture(imageNamed: "Star_Red_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1075,7 +1038,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             star_red.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 4)
         }
         
-        if firstBody.node?.name == "Container_Star_Yellow" && secondBody.node?.name == figure_name_sy {
+        if secondBody.node?.name == star_yellow.name {
             print("Contact detected")
             containerSprite[23].block.texture = SKTexture(imageNamed: "Star_Yellow_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1089,13 +1052,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        
-        
-        
-        
-        
         //SQUARES
-        if firstBody.node?.name == "Container_Square_Blue" && secondBody.node?.name == figure_name_sqb {
+        if secondBody.node?.name == square_blue.name {
             print("Contact detected")
             containerSprite[2].block.texture = SKTexture(imageNamed: "Square_Blue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1106,7 +1064,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             square_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         }
         
-        if firstBody.node?.name == "Container_Square_DBlue" && secondBody.node?.name == figure_name_sqdb {
+        if secondBody.node?.name == square_dblue.name {
             print("Contact detected")
             containerSprite[7].block.texture = SKTexture(imageNamed: "Square_DBlue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1119,7 +1077,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBody.node?.name == "Container_Square_Green" && secondBody.node?.name == figure_name_sqg {
+        if secondBody.node?.name == square_green.name {
             print("Contact detected")
             containerSprite[12].block.texture = SKTexture(imageNamed: "Square_Green_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1131,7 +1089,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBody.node?.name == "Container_Square_Red" && secondBody.node?.name == figure_name_sqr {
+        if secondBody.node?.name == square_red.name {
             print("Contact detected")
             containerSprite[17].block.texture = SKTexture(imageNamed: "Square_Red_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1144,7 +1102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBody.node?.name == "Container_Square_Yellow" && secondBody.node?.name == figure_name_sqy {
+        if secondBody.node?.name == square_yellow.name {
             print("Contact detected")
             containerSprite[22].block.texture = SKTexture(imageNamed: "Square_Yellow_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1157,7 +1115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         //HEXAGONES
-        if firstBody.node?.name == "Container_Hexagone_Blue" && secondBody.node?.name == figure_name_hb {
+        if secondBody.node?.name == hexagone_blue.name {
             print("Contact detected")
             containerSprite[1].block.texture = SKTexture(imageNamed: "Hexagone_Blue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1168,7 +1126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hexagone_blue.position = CGPoint(x: self.frame.size.width / -4, y: self.frame.size.width / 2)
         }
         
-        if firstBody.node?.name == "Container_Hexagone_DBlue" && secondBody.node?.name == figure_name_hdb {
+        if secondBody.node?.name == hexagone_dblue.name {
             print("Contact detected")
             containerSprite[6].block.texture = SKTexture(imageNamed: "Hexagone_DBlue_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1181,7 +1139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBodyHexa.node?.name == "Container_Hexagone_Green" && secondBodyHexa.node?.name == figure_name_hg {
+        if secondBodyHexa.node?.name == hexagone_green.name {
             print("Contact detected")
             containerSprite[11].block.texture = SKTexture(imageNamed: "Hexagone_Green_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1193,7 +1151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBody.node?.name == "Container_Hexagone_Red" && secondBody.node?.name == figure_name_hr {
+        if secondBody.node?.name == hexagone_red.name {
             print("Contact detected")
             containerSprite[16].block.texture = SKTexture(imageNamed: "Hexagone_Red_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -1206,7 +1164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         }
         
-        if firstBody.node?.name == "Container_Hexagone_Yellow" && secondBody.node?.name == figure_name_hy {
+        if secondBody.node?.name == hexagone_yellow.name {
             print("Contact detected")
             containerSprite[21].block.texture = SKTexture(imageNamed: "Hexagone_Yellow_Filled")
             //print("Contact happened between square 1 and square 2")
@@ -2030,10 +1988,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        
-        
-        
-        
         //HEXAGONES
         if isFingerOnHexagoneBlue {
             
@@ -2184,7 +2138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Checar()
         //Win()
         
-        if arraySprites.count == 20{
+        if arraySprites.count == 0{
             binEmpty.isHidden = false
             let transition = SKTransition.fade(with: UIColor(red:0.00, green:0.00, blue:0.00, alpha:1.0), duration: 0.2)
             
