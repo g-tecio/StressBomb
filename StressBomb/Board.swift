@@ -48,7 +48,7 @@ struct ContainerSprite{
         block = SKSpriteNode(imageNamed: containers[numContainer])
         block2 = SKSpriteNode(imageNamed: containers[1])
         let numberOfBlocks = 12.5
-        let blockScale = 0.5
+        let blockScale = 0.6
         
         // Resizing depending to screen size
         
@@ -61,15 +61,16 @@ struct ContainerSprite{
         
         let blockWidth = block.size.width / 3.8
         let totalBlocksWidth = blockWidth * CGFloat(numberOfBlocks)
-        let xOffset = (inThisScene.size.width - totalBlocksWidth) / 1.70
+        let xOffset = (inThisScene.size.width - totalBlocksWidth) / 1.05
+        let yOffset = (inThisScene.size.height - totalBlocksWidth) / 40
         
         //        block.position = CGPoint(x: (inThisScene.size.width * 0.225 * CGFloat(col)), y: (inThisScene.size.height * 0.825 * CGFloat(row)))
         
-        block.position = CGPoint(x: xOffset + CGFloat( CGFloat(col) + 1) * (blockWidth * 1.480), y: (inThisScene.size.height)  - ((block.size.height * 0.335) * CGFloat(row)) )
+        block.position = CGPoint(x: xOffset + CGFloat( CGFloat(col) + 1) * (blockWidth * 1.450), y: yOffset + (inThisScene.size.height)  - ((block.size.height * 0.320) * CGFloat(row)) )
         
         
         
-        block.size = CGSize(width: 105, height: 105)
+        block.size = CGSize(width:(block.size.width)*(inThisScene.size.width/block.size.width)/(11.42/1.5),  height: block.size.height * (inThisScene.size.height/block.size.height)/(6.42/1.5))
         block.physicsBody = SKPhysicsBody(rectangleOf: block.frame.size)
         block.physicsBody!.collisionBitMask = 0
         block.physicsBody?.affectedByGravity = false
